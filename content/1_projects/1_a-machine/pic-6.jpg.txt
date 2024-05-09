@@ -1,5 +1,0 @@
-Uuid: ToeeQN18cwp2Otpl
-
-----
-
-Template: blocks/image
