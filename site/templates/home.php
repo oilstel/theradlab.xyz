@@ -110,8 +110,20 @@
     <section id="about">
         <button class="close-section">Close</button>
 
-        <article>
-            
+        <article class="page-content">
+            <?php foreach (page('about')->layout()->toLayouts() as $layout): ?>
+                <div class="layout-grid" id="<?= esc($layout->id()) ?>">
+                    <?php foreach ($layout->columns() as $column): ?>
+                        <div class="column" style="--span:<?= esc($column->span()) ?>">
+                            <?php foreach ($column->blocks() as $block): ?>
+                                <div class="block block-type-<?= esc($block->type()) ?>">
+                                    <?= $block ?>
+                                </div>
+                            <?php endforeach ?>
+                        </div>
+                    <?php endforeach ?>
+                </div>
+            <?php endforeach ?>
         </article>
     </section>
 

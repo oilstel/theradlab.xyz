@@ -1,4 +1,8 @@
 :root {
+    /* Font Styles */
+    --sans-serif-ff: 'AkkuratPro', sans-serif;
+    --serif-ff: 'ABCSynt', serif;
+
     /* Color Styles */
     --true-black: #000000;
     --obsidian: #17171A;
@@ -54,7 +58,7 @@
 html {
     margin: 0;
     padding: 0;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: var(--serif-ff);
     color: var(--true-black);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale; 
@@ -106,7 +110,7 @@ section {
     bottom: 0;
     left: 0;
     right: 0;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(96px);
     background-color: rgba(255, 255, 255, 0.3);
     z-index: 999;
 }
@@ -152,6 +156,7 @@ section#index h1 {
     text-align: center;
 }
 #index-inner {
+    font-family: var(--sans-serif-ff);
     padding: 20px;
     margin-top: 100px;
 }
@@ -160,6 +165,7 @@ section#index h1 {
     flex-flow: row nowrap;
     border-bottom: 1px solid var(--modem);
     padding-bottom: 10px;
+    gap: 26px;
 }
 #search-and-filters #search {
     width: 60%;
@@ -185,12 +191,13 @@ section#index h1 {
 }
 #search-and-filters span.descriptor {
     font-size: var(--p1-font-size);
-    font-weight: bold;
+    font-weight: 400;
 }
 #index-items {
     display: flex;
     flex-flow: column nowrap;
-    gap: 4px;
+    padding-top: 20px;
+    overflow-y: auto;
 }
 #index-items .item {
     display: flex;
@@ -287,8 +294,10 @@ section#index h1 {
     width: 100%;
 }
 .page-content h2 {
+    font-weight: 400;
 }
 .page-content p {
+    font-family: var(--sans-serif-ff);
     font-size: var(--p1-font-size);
     line-height: var(--p1-line-height);
 }
@@ -298,6 +307,7 @@ section#index h1 {
     line-height: 0;
 }
 .page-content figure figcaption {
+    font-family: var(--sans-serif-ff);
     font-size: var(--p2-font-size);
     line-height: var(--p2-line-height);
     color: var(--modem);
