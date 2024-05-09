@@ -42,7 +42,8 @@ tabs:
         format: YYYY
 
       tags:
-        label: Tags
+        label: Type
         type: tags
-        help: "Add relevant tags or categories for this project."
+        help: "Add a category for this project."
         separator: ","
+        max: 1

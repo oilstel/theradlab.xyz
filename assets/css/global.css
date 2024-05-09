@@ -165,7 +165,6 @@ section#index h1 {
     flex-flow: row nowrap;
     border-bottom: 1px solid var(--modem);
     padding-bottom: 10px;
-    gap: 26px;
 }
 #search-and-filters #search {
     width: 60%;
@@ -215,7 +214,7 @@ section#index h1 {
     width: 20%;
 }
 #index-items .item .tag-and-date {
-    color: var(--)
+    color: var(--modem);
     width: 20%;
 }
 #index-items .item.selected {
