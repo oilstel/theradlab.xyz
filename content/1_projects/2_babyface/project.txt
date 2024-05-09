@@ -1,0 +1,25 @@
+Title: Babyface
+
+----
+
+Cover: - file://QdtJZee3lJtAx2Ib
+
+----
+
+Authors: Mikki, Amy
+
+----
+
+Date: 2024-01-01
+
+----
+
+Tags: Robo, Art
+
+----
+
+Blocks: [{"content":{"images":["file://MQn2EWEoHmH3FwNA","file://X7eYqocBZ7RCZ4ru","file://QdtJZee3lJtAx2Ib","file://6SQIl4JzC8MNiafV","file://hLZMg9N0LiDxS6uQ","file://CkeIGtkAzjSRs3WC","file://E1BSvTpOEz48ZbDu","file://9qOTLWMzTuYQwtpt","file://rgeobTrFZqfnL7n0"],"caption":"","ratio":"1/1","crop":"false"},"id":"34d34c15-2945-4d31-a0ad-b4782f205392","isHidden":false,"type":"gallery"},{"content":{"level":"h2","text":"A Machine"},"id":"4bed1441-0e9d-422b-a850-db7928a8f98c","isHidden":false,"type":"heading"},{"content":{"text":"<p>Vivamus tempus facilisis nisl, suscipit gravida lacus elementum et. Duis mi sem, interdum at mauris at, vulputate gravida orci. Sed aliquam vehicula metus, sit amet convallis urna suscipit quis. Pellentesque erat nisi, accumsan a elit sit amet, ultrices ultricies ex. Aenean diam sem, interdum ac lorem a, tempor cursus augue. Vestibulum pretium ligula dolor, et tempor diam pharetra at. Fusce et convallis lacus. Ut venenatis lobortis consectetur. Suspendisse maximus eleifend orci et tincidunt. Morbi auctor pellentesque arcu at eleifend. Sed ut faucibus magna, in aliquet lacus. Phasellus scelerisque nibh vitae sapien egestas, et cursus dui vehicula. Aenean at commodo dui.</p>"},"id":"f0a3d2c3-de2e-4029-b091-c89fc3e3b6a6","isHidden":false,"type":"text"}]
+
+----
+
+Uuid: TNNMc6C8sH9fmXp4

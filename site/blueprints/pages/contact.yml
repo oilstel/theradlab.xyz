@@ -1,0 +1,71 @@
+title: Contact
+
+columns:
+  # Main content area
+  main:
+    width: 2/3
+    sections:
+      fieldsSection:
+        type: fields
+        fields:
+          introHeadline:
+            label: Page Introduction
+            type: headline
+            text: Introduction Section
+          pageContent:
+            label: Page Content
+            type: textarea
+            buttons:
+              - bold
+              - italic
+              - link
+              - email
+              - file
+              - "|"
+              - ul
+              - ol
+              - file
+          sectionsHeadline:
+            label: Sections
+            type: headline
+            text: Page Sections
+          sections:
+            label: Page Sections
+            type: structure
+            fields:
+              sectionTitle:
+                label: Section Title
+                type: text
+              sectionBody:
+                label: Section Body
+                type: textarea
+                buttons:
+                  - bold
+                  - italic
+                  - link
+                  - email
+                  - file
+                  - ul
+                  - ol
+                  - file
+              isOpen:
+                label: Open by default?
+                type: toggle
+                default: false
+                text:
+                  - 'Closed'
+                  - 'Open'
+
+  # Sidebar with subpages and files
+  sidebar:
+    width: 1/3
+    sections:
+      # subpagesSection:
+      #   type: pages
+      #   headline: Subpages
+      #   template: page
+      #   status: all
+      filesSection:
+        type: files
+        headline: All Files
+        template: file

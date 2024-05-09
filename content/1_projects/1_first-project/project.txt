@@ -1,0 +1,25 @@
+Title: First project
+
+----
+
+Cover: - file://M9k9H3OQG3KE7IbQ
+
+----
+
+Authors: Elliott Cost, Mikki, Amy
+
+----
+
+Date: 2024-01-01
+
+----
+
+Tags: Design, Art, Robos
+
+----
+
+Blocks: [{"content":{"images":["file://M9k9H3OQG3KE7IbQ","file://2SMGZRzBCmGYObf5","file://ToeeQN18cwp2Otpl","file://qgYcRVIoKJuHwwmn","file://a6beDJ8tVWn8CuUB"],"caption":"","ratio":"1/1","crop":"false"},"id":"8e1d50a0-b6f5-4452-b49b-807b197dee08","isHidden":false,"type":"gallery"},{"content":{"text":"<p>hello this is just some content</p><p>hi again</p><p></p><p>ajsldkfjsklad</p>"},"id":"803e9e9f-2aa9-4f69-849f-b8c57753cfd5","isHidden":false,"type":"text"}]
+
+----
+
+Uuid: ugpuTG96zRZzwAxZ

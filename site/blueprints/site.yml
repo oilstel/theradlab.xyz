@@ -1,5 +1,27 @@
 title: Site
 
 sections:
-  pages:
+  homepageProjects:
+    label: Homepage Projects
+    type: fields
+    fields:
+      homepageProjects:
+        label: Homepage Projects
+        type: pages
+        query: site.find('projects').children.listed
+        multiple: true
+        info: "{{ page.title }}"
+        
+  recentProjects:
+    label: Recent Projects
     type: pages
+    query: site.find('projects').children.listed.limit(5)
+    info: "{{ page.title }}"
+
+  pages:
+    label: Sections
+    type: pages
+    template:
+      - projects
+      - contact
+      - about
