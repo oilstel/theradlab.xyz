@@ -79,6 +79,11 @@ nav a#site-title {
     left: 50%;
     transform: translate(-50%, 0);
 }
+nav a#index-btn {
+    left: 50%;
+    transform: translate(-50%, 0);
+    bottom: 24px;
+}
 nav a#about-btn {
     left: 0px;
     transform: translate(0, -50%) rotate(270deg);
@@ -102,11 +107,26 @@ section {
 }
 section button.close-section {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 24px;
+    right: 24px;
+    display: flex;
+    gap: 3px;
+    align-items: center;
+    background-color: transparent;
+    border: 0;
+    padding: 4px;
+    font-size: var(--p1-font-size);
+    color: var(--true-black);
+    cursor: pointer;
 }
-section#index {
-    z-index: 10001;
+section button.close-section::before {
+    content: '';
+    background-image: url('/assets/images/close-symbol.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    display: block;
 }
 img#test {
     position: absolute;
@@ -173,6 +193,7 @@ section#index h1 {
     gap: 10px;
     font-size: var(--p1-font-size);
     line-height: var(--p1-line-height);
+    cursor: pointer;
 }
 #index-items .item .title {
     width: 60%;
@@ -182,4 +203,70 @@ section#index h1 {
 }
 #index-items .item .tag-and-date {
     width: 20%;
+}
+#index-items .item.selected {
+    background-color: var(--calcite);
+}
+
+/* About */
+
+/* Contact */
+
+
+
+/* Sections animation */
+#about, #contact, #index {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    overflow-y: auto;
+    z-index: 1000;
+    transition: transform 0.5s ease;
+}
+
+/* About: Initially offscreen to the left */
+#about {
+    /* left: -100%; */
+    transform: translateX(-100%);
+}
+
+/* Contact: Initially offscreen to the right */
+#contact {
+    right: -100%;
+    transform: translateX(100%);
+}
+
+/* Index: Initially offscreen at the bottom */
+#index {
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    overflow-y: auto;
+    transition: transform 0.5s ease;
+    transform: translateY(100%);
+}
+
+/* Visible states */
+#about.visible {
+    transform: translateX(0);
+}
+
+#contact.visible {
+    transform: translateX(0);
+}
+
+#index.visible {
+    transform: translateY(0);
+}
+
+
+
+/* Feed */
+#feed {
+    max-width: 888px;
+    margin: 0 auto;
+}
+#feed img {
+    width: 100%;
 }

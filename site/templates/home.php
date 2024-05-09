@@ -4,6 +4,7 @@
 <main>
     <nav>
         <a id="site-title"><img src="/assets/images/logo.svg" alt="The Rad Lab"></a>
+        <a id="index-btn">Index</a>
         <a id="about-btn">About</a>
         <a id="contact-btn">Contact</a>
     </nav>
@@ -117,7 +118,11 @@
         </article>
     </section>
 
-    <img src="https://d2w9rnfcy7mm78.cloudfront.net/27992858/original_1886204428be78122fc0ea69df09866d.jpg?1715162752?bc=0" alt="" id="test">
+    <!-- Feed of projects loaded from index -->
+    <div id="feed">
+
+    </div>
+
 </main>
 
 <!-- Footer -->
