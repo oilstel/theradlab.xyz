@@ -77,21 +77,27 @@
                         <!-- Tags and Date -->
                         <div class="tag-and-date">
                             <?php
-                            // Handle tags to avoid trailing commas
+                            // Retrieve and clean the tags
                             $tags = $project->tags()->isNotEmpty() ? $project->tags()->split(',') : [];
+                            $tagsArray = array_map('trim', $tags);
 
-                            // Use a loop to generate a list of tags with proper separation
-                            $tagsOutput = '';
-                            if (!empty($tags)) {
-                                $tagsOutput = esc(implode(', ', array_map('trim', $tags)));
+                            // Generate the tag list without trailing commas
+                            $tagsOutput = !empty($tagsArray) ? esc(implode(', ', $tagsArray)) : 'No tags';
+
+                            // Retrieve the date and convert it to the desired format
+                            $date = $project->date()->isNotEmpty() ? esc($project->date()->toDate('Y')) : '';
+
+                            // Prepare the final output with a conditional comma before the date
+                            if (!empty($tagsArray) && !empty($date)) {
+                                // Both tags and date are available
+                                $finalOutput = "$tagsOutput, $date";
                             } else {
-                                $tagsOutput = 'No tags';
+                                // Output tags or date separately
+                                $finalOutput = !empty($date) ? $tagsOutput . ', ' . $date : $tagsOutput;
                             }
 
-                            // Ensure date field is not empty before outputting
-                            $date = $project->date()->isNotEmpty() ? esc($project->date()->toDate('Y')) : 'Unknown date';
-
-                            echo "$tagsOutput, $date";
+                            // Display the final result
+                            echo $finalOutput;
                             ?>
                         </div>
                     </div>
@@ -119,7 +125,7 @@
     </section>
 
     <!-- Feed of projects loaded from index -->
-    <div id="feed">
+    <div id="feed" class="page-content">
 
     </div>
 

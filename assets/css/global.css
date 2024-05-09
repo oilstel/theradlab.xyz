@@ -9,7 +9,7 @@
     --terminal: #345995;
     --modem: #8C9091;
     --cadmium: #ED5E3C;
-    --calcite: #FBFDC7;
+    --calcite: rgba(251, 253, 199, 0.6);
     --quartz: #E2D8E1;
     --noon: #35A7FF;
     --lichen: #C5E0D8;
@@ -65,6 +65,10 @@ html {
     padding: 0;
     height: 100dvh;
 }
+body {
+    padding: 0;
+    margin: 0;
+}
 nav a {
     position: fixed;
     font-size: 24px;
@@ -73,6 +77,7 @@ nav a {
     color: var(--true-black);
     text-transform: uppercase;
     z-index: 1000;
+    cursor: pointer;
 }
 nav a#site-title {
     top: 24px;
@@ -194,6 +199,7 @@ section#index h1 {
     font-size: var(--p1-font-size);
     line-height: var(--p1-line-height);
     cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
 }
 #index-items .item .title {
     width: 60%;
@@ -202,6 +208,7 @@ section#index h1 {
     width: 20%;
 }
 #index-items .item .tag-and-date {
+    color: var(--)
     width: 20%;
 }
 #index-items .item.selected {
@@ -261,12 +268,81 @@ section#index h1 {
 }
 
 
-
 /* Feed */
 #feed {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 100px;
+}
+
+
+/* Page Content Layout */
+.page-content {
     max-width: 888px;
     margin: 0 auto;
+    margin-top: 80px;
+    padding: 24px;
 }
-#feed img {
+.page-content img {
     width: 100%;
 }
+.page-content h2 {
+}
+.page-content p {
+    font-size: var(--p1-font-size);
+    line-height: var(--p1-line-height);
+}
+.page-content figure {
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+}
+.page-content figure figcaption {
+    font-size: var(--p2-font-size);
+    line-height: var(--p2-line-height);
+    color: var(--modem);
+    margin-top: 12px;
+}
+.page-content figure ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.page-content figure ul li {
+    line-height: 0;
+}
+.page-content .block-type-image {
+    margin-bottom: 12px;
+}
+
+
+/* Tablet */
+@media(max-width:838px) {
+    nav a#site-title {
+        left: 24px;
+        transform: initial;
+    }
+    nav a#index-btn {
+        top: 24px;
+        left: initial;
+        right: 24px;
+        transform: initial;
+    }
+    nav a#about-btn {
+        top: initial;
+        left: 24px;
+        bottom: 24px;
+        transform: initial;
+    }
+    nav a#contact-btn {
+        top: initial;
+        right: 24px;
+        bottom: 24px;
+        transform: initial;
+    }
+}
+
+/* Mobile */

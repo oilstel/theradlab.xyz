@@ -1,0 +1,29 @@
+Title: A Machine
+
+----
+
+Layout: [{"attrs":[],"columns":[{"blocks":[{"content":{"text":"<p>condimentum est sagittis. Quisque convallis congue sapien, sit amet dictum arcu consequat a. Cras faucibus eros non quam sagittis volutpat. Aliquam ut sollicitudin magna, ut cursus nunc. Nam faucibus nulla eget faucibus porttitor. Vestibulum sollicitudin mollis varius. Integer vitae.</p>"},"id":"78bf7c1a-85e4-42ab-9eab-93f8dbadc191","isHidden":false,"type":"text"},{"content":{"image":["file://6AapiwCHiuOVaVx3"],"alt":"","caption":"Caption goes here. Lorem ipsum dolor sit amet.","link":""},"id":"18dbecde-fb51-4309-8e6a-ccbba7cba5ab","isHidden":false,"type":"image"},{"content":{"text":"<p>condimentum est sagittis. Quisque convallis congue sapien, sit amet dictum arcu consequat a. Cras faucibus eros non quam sagittis volutpat. Aliquam ut sollicitudin magna, ut cursus nunc. Nam faucibus nulla eget faucibus porttitor. Vestibulum sollicitudin mollis varius. Integer vitae.</p>"},"id":"80717b0b-050b-4ca6-917a-118ef0ebbcb5","isHidden":false,"type":"text"},{"content":{"images":["file://a6beDJ8tVWn8CuUB","file://mWWavt7TlHXvfqSU"],"caption":"Caption goes here. Lorem ipsum dolor sit amet."},"id":"46c4af28-88f8-439a-976c-dc8c6034607b","isHidden":false,"type":"gallery"}],"id":"356ee2e9-0317-4b5b-972e-11658203b61c","width":"1/1"}],"id":"fdcc2716-7fe4-46ad-8291-21f175bb1bdd"},{"attrs":[],"columns":[{"blocks":[{"content":{"level":"h2","text":"Performances"},"id":"909b8764-325d-4db4-ab8d-b4ebe45bf287","isHidden":false,"type":"heading"},{"content":{"text":"<p>Lorem ipsum dolor sit amet\u2028Sit amet dictum arcu consequat\u2028Lorem Ipsum Dolor\u2028Ut cursus nunc\u2028Nam faucibus nulla eget\u2028Portitor vestiblum sollicitudin</p>"},"id":"2284349b-c234-4fa3-8641-0c4c12e828bd","isHidden":false,"type":"text"}],"id":"9ae68367-9c48-4a3a-83c5-aa01ce3f2cb1","width":"1/2"},{"blocks":[{"content":{"level":"h2","text":"Collaborators"},"id":"8d3613be-4f2c-490e-b26f-5f6ab8110d43","isHidden":false,"type":"heading"},{"content":{"text":"<p>Lorem ipsum dolor sit amet\u2028Sit amet dictum arcu consequat\u2028Lorem Ipsum Dolor\u2028Ut cursus nunc\u2028Nam faucibus nulla eget\u2028Portitor vestiblum sollicitudin</p>"},"id":"f5ef351f-92f7-4976-83ae-5da0c7d93c85","isHidden":false,"type":"text"}],"id":"84814476-1643-4696-b4f2-a3dca07f4f96","width":"1/2"}],"id":"6df92233-b3a6-4d01-a524-047411b3ac89"}]
+
+----
+
+Cover: 
+
+----
+
+Authors: Elliott Cost, Mikki, Amy
+
+----
+
+Date: 
+
+----
+
+Tags: Design, Art, Robos
+
+----
+
+Blocks: [{"content":{"images":["file://M9k9H3OQG3KE7IbQ","file://2SMGZRzBCmGYObf5","file://ToeeQN18cwp2Otpl","file://qgYcRVIoKJuHwwmn","file://a6beDJ8tVWn8CuUB"],"caption":"","ratio":"1/1","crop":"false"},"id":"8e1d50a0-b6f5-4452-b49b-807b197dee08","isHidden":false,"type":"gallery"},{"content":{"text":"<p>hello this is just some content</p><p>hi again</p><p></p><p>ajsldkfjsklad</p>"},"id":"803e9e9f-2aa9-4f69-849f-b8c57753cfd5","isHidden":false,"type":"text"}]
+
+----
+
+Uuid: ugpuTG96zRZzwAxZ

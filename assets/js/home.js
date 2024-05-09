@@ -141,13 +141,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const coverHtml = project.cover && project.cover.value ? 
             `<img src="${project.cover.value}" alt="${project.title} Cover">` : "";
 
-        // Generate HTML for the blocks by joining them together
-        const blocksHtml = project.blocks ? project.blocks.join('') : '';
+        // Generate HTML for the layouts by joining them together
+        const layoutsHtml = project.layouts ? project.layouts.join('') : '';
 
         projectElement.innerHTML = `
-            <button class="toggle-feed-item">Remove</button>
-            <h2>${project.title}</h2>
-            <div>${blocksHtml}</div>
+            <h2 class="project-title">${project.title}</h2>
+            <div>${layoutsHtml}</div>
         `;
 
         return projectElement;
@@ -199,6 +198,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    fetchAndAddProject('babyface');
+    fetchAndAddProject('a-machine');
+
     // Event listener to remove feed items via the "Remove" button
     feedContainer.addEventListener("click", function (event) {
         if (event.target.classList.contains("toggle-feed-item")) {
@@ -213,3 +215,5 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+
