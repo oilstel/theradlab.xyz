@@ -6,7 +6,7 @@
         <a id="site-title"><img src="/assets/images/logo.svg" alt="The Rad Lab"></a>
         <a id="index-btn">Index</a>
         <a id="about-btn">About</a>
-        <a id="contact-btn">Contact</a>
+        <a id="contact-btn" href="mailto:amy@theradlab.xyz">Contact</a>
     </nav>
 
     <!-- Index -->
@@ -82,7 +82,7 @@
                             $tagsArray = array_map('trim', $tags);
 
                             // Generate the tag list without trailing commas
-                            $tagsOutput = !empty($tagsArray) ? esc(implode(', ', $tagsArray)) : 'No tags';
+                            $tagsOutput = !empty($tagsArray) ? esc(implode(', ', $tagsArray)) : '';
 
                             // Retrieve the date and convert it to the desired format
                             $date = $project->date()->isNotEmpty() ? esc($project->date()->toDate('Y')) : '';
@@ -122,6 +122,30 @@
     <div id="feed" class="page-content">
 
     </div>
+
+    <!-- Lilypads -->
+    <div id="lilypads">
+        <?php foreach ($site->homepageProjects()->toPages() as $project): ?>
+            <figure id="<?= $project->slug() ?>">
+                <?php
+                // Attempt to find the cover image
+                $cover = $project->cover()->toFile();
+                
+                // Fallback to the first image if no cover is specified
+                if (!$cover) {
+                    $cover = $project->images()->first();
+                }
+
+                // If an image is found, display it
+                if ($cover): ?>
+                    <img src="<?= $cover->url() ?>" alt="<?= $cover->alt() ?>">
+                <?php endif; ?>
+                
+                <figcaption><?= $project->title()->html() ?></figcaption>
+            </figure>
+        <?php endforeach; ?>
+    </div>
+
 
 </main>
 

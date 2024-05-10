@@ -3,6 +3,58 @@ document.addEventListener("DOMContentLoaded", function () {
     const items = itemsContainer.getElementsByClassName("item");
     const searchInput = document.querySelector("#search input[type='search']");
     const filterCheckboxes = document.querySelectorAll("#filters input[type='checkbox']");
+    const lilypads = document.querySelectorAll("#lilypads figure");
+    const indexItems = document.querySelectorAll("#index-items .item");
+    const feedContainer = document.getElementById("feed");
+    const body = document.body;
+
+    // Sections and navigation buttons
+    const aboutSection = document.getElementById("about");
+    const contactSection = document.getElementById("contact");
+    const indexSection = document.getElementById("index");
+    const aboutButton = document.getElementById("about-btn");
+    const contactButton = document.getElementById("contact-btn");
+    const indexButton = document.getElementById("index-btn");
+    const aboutCloseButton = aboutSection.querySelector(".close-section");
+    const contactCloseButton = contactSection.querySelector(".close-section");
+    const indexCloseButton = indexSection.querySelector(".close-section");
+
+    // Shared array to track selected projects
+    const selectedProjects = [];
+
+    // Toggle body overflow when a section is opened/closed
+    function setBodyOverflow(hidden) {
+        body.style.overflow = hidden ? "hidden" : "";
+    }
+
+    // Function to toggle section visibility
+    function toggleSection(section, visible) {
+        section.classList.toggle("visible", visible);
+        setBodyOverflow(visible);
+    }
+
+    // Event listeners to control section visibility
+    aboutButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        toggleSection(aboutSection, true);
+    });
+    aboutCloseButton.addEventListener("click", function () {
+        toggleSection(aboutSection, false);
+    });
+    contactButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        toggleSection(contactSection, true);
+    });
+    contactCloseButton.addEventListener("click", function () {
+        toggleSection(contactSection, false);
+    });
+    indexButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        toggleSection(indexSection, true);
+    });
+    indexCloseButton.addEventListener("click", function () {
+        toggleSection(indexSection, false);
+    });
 
     // Function to filter and search items
     function filterAndSearchItems() {
@@ -35,102 +87,6 @@ document.addEventListener("DOMContentLoaded", function () {
         checkbox.addEventListener("change", filterAndSearchItems);
     });
 
-
-
-
-
-
-});
-
-
-// Show and hide sections
-document.addEventListener("DOMContentLoaded", function () {
-    // References to the sections
-    const aboutSection = document.getElementById("about");
-    const contactSection = document.getElementById("contact");
-    const indexSection = document.getElementById("index");
-
-    // References to the buttons
-    const aboutButton = document.getElementById("about-btn");
-    const contactButton = document.getElementById("contact-btn");
-    const indexButton = document.getElementById("index-btn");
-
-    // Close buttons inside each section
-    const aboutCloseButton = aboutSection.querySelector(".close-section");
-    const contactCloseButton = contactSection.querySelector(".close-section");
-    const indexCloseButton = indexSection.querySelector(".close-section");
-
-    // Toggle About section visibility
-    function openAbout() {
-        aboutSection.classList.add("visible");
-    }
-
-    function closeAbout() {
-        aboutSection.classList.remove("visible");
-    }
-
-    // Toggle Contact section visibility
-    function openContact() {
-        contactSection.classList.add("visible");
-    }
-
-    function closeContact() {
-        contactSection.classList.remove("visible");
-    }
-
-    // Toggle Index section visibility
-    function openIndex() {
-        indexSection.classList.add("visible");
-    }
-
-    function closeIndex() {
-        indexSection.classList.remove("visible");
-    }
-
-    // Event listeners for opening and closing sections
-    aboutButton.addEventListener("click", function (event) {
-        event.preventDefault(); // Prevent default navigation
-        openAbout();
-    });
-
-    aboutCloseButton.addEventListener("click", function () {
-        closeAbout();
-    });
-
-    contactButton.addEventListener("click", function (event) {
-        event.preventDefault(); // Prevent default navigation
-        openContact();
-    });
-
-    contactCloseButton.addEventListener("click", function () {
-        closeContact();
-    });
-
-    indexButton.addEventListener("click", function (event) {
-        event.preventDefault(); // Prevent default navigation
-        openIndex();
-    });
-
-    indexCloseButton.addEventListener("click", function () {
-        closeIndex();
-    });
-});
-
-
-
-
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    const indexItems = document.querySelectorAll("#index-items .item");
-    const feedContainer = document.getElementById("feed");
-
-    // Keeps track of selected projects in an ordered list
-    const selectedProjects = [];
-
     // Function to create an HTML representation of the project's content
     function createProjectContent(project) {
         const projectElement = document.createElement("div");
@@ -152,24 +108,20 @@ document.addEventListener("DOMContentLoaded", function () {
         return projectElement;
     }
 
-    // Function to fetch and add the selected project to the feed
-    async function fetchAndAddProject(slug) {
+    // Function to fetch and reorder a project to the top without removing it
+    async function fetchAndReorderProject(slug) {
         try {
-            const response = await fetch(`/projects/${slug}.json`);
-            const project = await response.json();
-
-            // Add the slug to the project object for use in the DOM
-            project.slug = slug;
-
-            // Check if this project is already selected
             const index = selectedProjects.findIndex(item => item.slug === slug);
 
             if (index !== -1) {
-                // Remove existing project from the list to toggle selection
-                selectedProjects.splice(index, 1);
-                document.getElementById(`feed-${slug}`).remove();
+                // Move existing project to the top
+                const existingProject = selectedProjects.splice(index, 1)[0];
+                selectedProjects.unshift(existingProject);
             } else {
-                // Prepend the new project to the list
+                // Fetch and add the new project to the top of the list
+                const response = await fetch(`/projects/${slug}.json`);
+                const project = await response.json();
+                project.slug = slug;
                 selectedProjects.unshift(project);
             }
 
@@ -178,6 +130,22 @@ document.addEventListener("DOMContentLoaded", function () {
         } catch (error) {
             console.error(`Error fetching project ${slug}:`, error);
         }
+    }
+
+    // Function to fetch and toggle a project (open or close)
+    async function fetchAndToggleProject(slug) {
+        const index = selectedProjects.findIndex(item => item.slug === slug);
+
+        if (index !== -1) {
+            // Remove existing project to toggle it off
+            selectedProjects.splice(index, 1);
+            document.getElementById(`feed-${slug}`).remove();
+        } else {
+            // Fetch and add the new project
+            await fetchAndReorderProject(slug);
+        }
+
+        updateFeed();
     }
 
     // Update the feed by appending projects in selection order
@@ -189,17 +157,31 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Add event listeners to each index item
+    // Add event listeners to index items
     indexItems.forEach(item => {
         item.addEventListener("click", function () {
             const slug = item.id;
             item.classList.toggle("selected");
-            fetchAndAddProject(slug);
+            fetchAndToggleProject(slug);
+            window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to the top smoothly
         });
     });
 
-    fetchAndAddProject('babyface');
-    fetchAndAddProject('a-machine');
+    // Add event listeners to lilypad figures
+    lilypads.forEach(lilypad => {
+        lilypad.addEventListener("click", function () {
+            const slug = lilypad.id;
+
+            // Ensure the index item is selected
+            const indexItem = document.getElementById(slug);
+            if (indexItem) {
+                indexItem.classList.add("selected");
+            }
+
+            fetchAndReorderProject(slug); // Reorder but don't toggle off
+            window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to the top smoothly
+        });
+    });
 
     // Event listener to remove feed items via the "Remove" button
     feedContainer.addEventListener("click", function (event) {
@@ -215,5 +197,3 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-
-

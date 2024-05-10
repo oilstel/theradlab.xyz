@@ -6,8 +6,10 @@ sections:
     type: fields
     fields:
       homepageProjects:
-        label: Homepage Projects
+        label: Lilypads
         type: pages
+        layout: cards
+        size: tiny
         query: site.find('projects').children.listed
         multiple: true
         info: "{{ page.title }}"
@@ -21,6 +23,7 @@ sections:
   pages:
     label: Sections
     type: pages
+    max: 3
     template:
       - projects
       - contact

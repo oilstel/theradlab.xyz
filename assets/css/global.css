@@ -228,6 +228,53 @@ section#index h1 {
     background-color: var(--calcite);
 }
 
+/* Lilypads */
+#lilypads {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    max-width: 1710px;
+    margin: 0 auto;
+    margin-top: 80px;
+    padding: 0 100px;
+    column-gap: 20px;
+    row-gap: 150px;
+}
+#lilypads figure {
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+#lilypads figure:nth-child(1) {
+    grid-column: 1/5;
+    grid-row: 1/2;
+}
+#lilypads figure:nth-child(2) {
+    grid-column: 6/8;
+    grid-row: 1/2;
+    align-self: center;
+}
+#lilypads figure:nth-child(3) {
+    grid-column: 5/9;
+    grid-row: 2/3;
+}
+#lilypads figure:nth-child(4) {
+    grid-column: 2/7;
+    grid-row: 3/4;
+}
+#lilypads figure:nth-child(5) {
+    grid-column: 4/8;
+    grid-row: 4/5;
+}
+#lilypads figure figcaption {
+    font-family: var(--sans-serif-ff);
+    font-size: var(--p2-font-size);
+    line-height: var(--p2-line-height);
+    color: var(--modem);
+}
+#lilypads figure img {
+    width: 100%;
+}
+
 /* About */
 #about #intro {
     font-size: var(--h1-font-size);
