@@ -18,7 +18,7 @@
         <div id="index-inner">
             <div id="search-and-filters">
                 <div id="search">
-                    <span class="descriptor">Search by</span> <input type="text" placeholder="anything">
+                    <span class="descriptor">Search by</span> <input type="search" placeholder="anything">
                 </div>
 
                 <?php
@@ -107,25 +107,7 @@
     </section>
 
     <!-- About -->
-    <section id="about">
-        <button class="close-section">Close</button>
-
-        <article class="page-content">
-            <?php foreach (page('about')->layout()->toLayouts() as $layout): ?>
-                <div class="layout-grid" id="<?= esc($layout->id()) ?>">
-                    <?php foreach ($layout->columns() as $column): ?>
-                        <div class="column" style="--span:<?= esc($column->span()) ?>">
-                            <?php foreach ($column->blocks() as $block): ?>
-                                <div class="block block-type-<?= esc($block->type()) ?>">
-                                    <?= $block ?>
-                                </div>
-                            <?php endforeach ?>
-                        </div>
-                    <?php endforeach ?>
-                </div>
-            <?php endforeach ?>
-        </article>
-    </section>
+    <?php snippet('about') ?>
 
     <!-- Contact -->
     <section id="contact">

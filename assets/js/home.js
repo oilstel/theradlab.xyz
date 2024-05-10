@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const itemsContainer = document.getElementById("index-items");
     const items = itemsContainer.getElementsByClassName("item");
-    const searchInput = document.querySelector("#search input[type='text']");
+    const searchInput = document.querySelector("#search input[type='search']");
     const filterCheckboxes = document.querySelectorAll("#filters input[type='checkbox']");
 
     // Function to filter and search items
@@ -145,8 +145,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const layoutsHtml = project.layouts ? project.layouts.join('') : '';
 
         projectElement.innerHTML = `
-            <h2 class="project-title">${project.title}</h2>
-            <div>${layoutsHtml}</div>
+            <h1 class="project-title">${project.title}</h1>
+            ${layoutsHtml}
         `;
 
         return projectElement;

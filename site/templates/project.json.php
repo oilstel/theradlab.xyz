@@ -22,12 +22,29 @@ foreach ($page->layout()->toLayouts() as $layout) {
     // Loop through each column in the layout
     foreach ($layout->columns() as $column) {
         // Start each column div with a calculated width
-        $layoutHtml .= '<div class="column" style="--span:' . esc($column->width()) . '">';
+        $layoutHtml .= '<div class="column" style="--span:' . esc($column->span(2)) . '">';
 
         // Loop through each block in the column and convert to HTML
         foreach ($column->blocks() as $block) {
-            // Add the block's HTML to the column
-            $layoutHtml .= '<div class="block block-type-' . esc($block->type()) . '">' . $block->toHtml() . '</div>';
+            // Check if the block is a heading
+            if ($block->type() == 'heading') {
+                // Retrieve data from the heading block
+                $level = $block->level()->value(); // e.g., h2 or h2Italic
+                $headerId = esc($block->headerId());
+                $text = $block->text()->html();
+
+                // Determine if this is italicized
+                if ($level === 'h2Italic') {
+                    // Create italicized heading
+                    $layoutHtml .= "<div class=\"block block-type-heading\"><h2 id=\"$headerId\"><i>$text</i></h2></div>";
+                } else {
+                    // Create regular heading
+                    $layoutHtml .= "<div class=\"block block-type-heading\"><h2 id=\"$headerId\">$text</h2></div>";
+                }
+            } else {
+                // Default handling for other block types
+                $layoutHtml .= '<div class="block block-type-' . esc($block->type()) . '">' . $block->toHtml() . '</div>';
+            }
         }
 
         // Close the column div

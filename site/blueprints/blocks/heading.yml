@@ -13,9 +13,12 @@ fields:
       - value: h2
         icon: h2
         text: H2
-      - value: h2
-        icon: h2
+      - value: h2Italic
+        icon: italic
         text: H2 Italic
+  headerId:
+    label: id
+    type: text
   text:
     label: field.blocks.heading.text
     type: writer

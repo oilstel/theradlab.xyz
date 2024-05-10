@@ -115,7 +115,7 @@ section {
     z-index: 999;
 }
 section button.close-section {
-    position: absolute;
+    position: fixed;
     top: 24px;
     right: 24px;
     display: flex;
@@ -164,10 +164,17 @@ section#index h1 {
     display: flex;
     flex-flow: row nowrap;
     border-bottom: 1px solid var(--modem);
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 }
 #search-and-filters #search {
     width: 60%;
+}
+#search-and-filters #search input[type="search"] {
+    font-family: var(--sans-serif-ff);
+    background-color: transparent;
+    outline: none;
+    border: 0;
+    padding: 0;
 }
 #search-and-filters #filters {
     display: flex;
@@ -181,14 +188,13 @@ section#index h1 {
     display: none;
 }
 #search-and-filters #filters .filter label {
-    font-size: var(--p1-font-size);
     color: var(--modem);
     cursor: pointer;
 }
 #search-and-filters #filters .filter input[type="checkbox"]:checked + label {
     color: var(--true-black);
 }
-#search-and-filters span.descriptor {
+#search-and-filters span.descriptor, #search-and-filters input, #search-and-filters label {
     font-size: var(--p1-font-size);
     font-weight: 400;
 }
@@ -202,6 +208,7 @@ section#index h1 {
     display: flex;
     flex-flow: row nowrap;
     gap: 10px;
+    padding: 6px 0px;
     font-size: var(--p1-font-size);
     line-height: var(--p1-line-height);
     cursor: pointer;
@@ -222,6 +229,17 @@ section#index h1 {
 }
 
 /* About */
+#about #intro {
+    font-size: var(--h1-font-size);
+    line-height: var(--h1-line-height);
+    margin-bottom: 12px;
+}
+#about #quick-links {
+    font-family: var(--sans-serif-ff);
+    font-size: var(--p1-font-size);
+    line-height: var(--p1-line-height);
+    margin-bottom: 12px;
+}
 
 /* Contact */
 
@@ -279,6 +297,7 @@ section#index h1 {
     display: flex;
     flex-flow: column nowrap;
     gap: 100px;
+    margin-top: 150px;
 }
 
 
@@ -289,11 +308,36 @@ section#index h1 {
     margin-top: 80px;
     padding: 24px;
 }
-.page-content img {
+.page-content .layout-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+.page-content .column {
+    grid-column: span var(--span);
+}
+.page-content img, .page-content iframe, .page-content video {
     width: 100%;
 }
 .page-content h2 {
     font-weight: 400;
+    margin-top: 24px !important;
+}
+.page-content a {
+    color: var(--modem);
+    text-decoration: none;
+}
+.page-content a:hover {
+    color: var(--true-black)
+}
+.page-content h1.project-title {
+    font-size: var(--h1-font-size);
+    font-style: italic;
+    font-weight: 300;
+    margin: 0;
+}
+.page-content h2, .page-content p {
+    margin: 12px 0;
 }
 .page-content p {
     font-family: var(--sans-serif-ff);
@@ -304,6 +348,7 @@ section#index h1 {
     margin: 0;
     padding: 0;
     line-height: 0;
+    margin: 36px 0;
 }
 .page-content figure figcaption {
     font-family: var(--sans-serif-ff);
@@ -330,6 +375,7 @@ section#index h1 {
 
 /* Tablet */
 @media(max-width:838px) {
+    /* Navigation */
     nav a#site-title {
         left: 24px;
         transform: initial;
@@ -351,6 +397,52 @@ section#index h1 {
         right: 24px;
         bottom: 24px;
         transform: initial;
+    }
+    /* Index */
+    #search-and-filters {
+        flex-flow: column nowrap;
+        gap: 20px;
+    }
+    #index-items {
+        gap: 0;
+    }
+    #index-items .item {
+        flex-flow: column nowrap;
+        gap: 2px;
+    }
+    #index-items .item .title {
+        order: 2;
+    }
+    #index-items .item .authors {
+        order: 3;
+    }
+    #index-items .item .tag-and-date {
+        order: 1;
+    }
+    /* Page Content */
+    .page-content .layout-grid {
+        grid-template-columns: 1fr;
+    }
+    /* 100% filters and index items */
+    #search-and-filters #search, #search-and-filters #filters, #index-items .item .title, #index-items .item .authors, #index-items .item .tag-and-date {
+        width: 100%;
+    }
+    /* Close button */
+    section button.close-section::before {
+        height: 20px;
+        width: 20px;
+    }
+    /* Mobile Font Size */
+    #index-items .item .title {
+        font-size: var(--p1-mobile-font-size);
+        line-height: var(--p1-mobile-line-height);
+    }
+    #search-and-filters span.descriptor, #search-and-filters input, #search-and-filters label, section button.close-section {
+        font-size: var(--p1-mobile-font-size);
+    }
+    #index-items .item .tag-and-date, #index-items .item .authors {
+        font-size: var(--p2-mobile-font-size);
+        line-height: var(--p2-mobile-line-height);
     }
 }
 

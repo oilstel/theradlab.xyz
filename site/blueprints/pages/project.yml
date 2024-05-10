@@ -15,7 +15,7 @@ tabs:
           - text
           - image
           - gallery
-
+          
   details:
     label: Details
     fields:
