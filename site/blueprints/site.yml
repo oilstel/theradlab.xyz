@@ -15,16 +15,18 @@ sections:
         info: "{{ page.title }}"
         
   recentProjects:
-    label: Recent Projects
+    label: Projects
     type: pages
-    query: site.find('projects').children.listed.limit(5)
+    query: site.find('projects').children
     info: "{{ page.title }}"
+    template:
+      - project
 
   pages:
-    label: Sections
+    label: Pages
     type: pages
     max: 3
     template:
-      - projects
-      - contact
+      # - projects
+      # - contact
       - about

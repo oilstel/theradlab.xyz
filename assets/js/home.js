@@ -41,10 +41,10 @@ document.addEventListener("DOMContentLoaded", function () {
     aboutCloseButton.addEventListener("click", function () {
         toggleSection(aboutSection, false);
     });
-    contactButton.addEventListener("click", function (event) {
-        event.preventDefault();
-        toggleSection(contactSection, true);
-    });
+    // contactButton.addEventListener("click", function (event) {
+    //     event.preventDefault();
+    //     toggleSection(contactSection, true);
+    // });
     contactCloseButton.addEventListener("click", function () {
         toggleSection(contactSection, false);
     });
