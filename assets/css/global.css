@@ -288,6 +288,9 @@ section#index h1 {
 }
 
 /* About */
+#about {
+    padding-bottom: 50px;
+}
 #about #intro {
     font-size: var(--h1-font-size);
     line-height: var(--h1-line-height);
@@ -468,6 +471,13 @@ section#index h1 {
         transform: initial;
     }
     /* Index */
+    section#index h1 {
+        font-size: var(--h1-mobile-font-size);
+        line-height: var(--h1-mobile-line-height);
+        position: absolute;
+        text-align: left;
+        left: 20px;
+    }
     #search-and-filters {
         flex-flow: column nowrap;
         gap: 20px;
@@ -596,6 +606,11 @@ section#index h1 {
         width: 170px;
         height: 45px;
         top: 18px
+    }
+    /* Index */
+    section#index h1 {
+        font-size: var(--h2-mobile-font-size);
+        line-height: var(--h2-mobile-line-height);
     }
     /* Lilypads */
     #lilypads {

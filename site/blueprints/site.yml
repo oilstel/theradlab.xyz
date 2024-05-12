@@ -21,11 +21,10 @@ tabs:
         label: Lilypads
         type: pages
         layout: cards
-        size: tiny
+        size: small
         query: site.find('projects').children.listed
         multiple: true
         image: page.cover.toFile() ?? page.images.first()
-        info: "{{ page.title }}"
 
 
   pagesTab:
