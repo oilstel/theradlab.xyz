@@ -3,7 +3,7 @@
 
 <main>
     <nav>
-        <a id="site-title"><img src="/assets/images/logo.svg" alt="The Rad Lab"></a>
+        <a href="#" id="site-title"></a>
         <a id="index-btn">Index</a>
         <a id="about-btn">About</a>
         <a id="contact-btn" href="mailto:amy@theradlab.xyz">Contact</a>

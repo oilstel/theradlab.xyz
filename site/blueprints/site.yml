@@ -1,10 +1,22 @@
 title: Site
 
-sections:
-  homepageProjects:
-    label: Homepage Projects
-    type: fields
-    fields:
+tabs:
+  projectsTab:
+    label: Projects
+    sections:
+      projects:
+        label: All Projects
+        type: pages
+        query: site.find('projects').children
+        info: "{{ page.authors }} {{ page.tags }} {{ page.date }}"
+        image: page.cover.toFile() ?? page.images.first()
+        template:
+          - project
+
+
+  homepageTab:
+    label: Homepage
+    sections:
       homepageProjects:
         label: Lilypads
         type: pages
@@ -12,21 +24,18 @@ sections:
         size: tiny
         query: site.find('projects').children.listed
         multiple: true
+        image: page.cover.toFile() ?? page.images.first()
         info: "{{ page.title }}"
-        
-  recentProjects:
-    label: Projects
-    type: pages
-    query: site.find('projects').children
-    info: "{{ page.title }}"
-    template:
-      - project
 
-  pages:
+
+  pagesTab:
     label: Pages
-    type: pages
-    max: 3
-    template:
-      # - projects
-      # - contact
-      - about
+    sections:
+      pages:
+        label: Pages
+        type: pages
+        max: 3
+        template:
+          - about  # Uncomment other templates as needed
+          # - projects
+          # - contact
