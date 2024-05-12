@@ -165,3 +165,38 @@ document.addEventListener("DOMContentLoaded", function () {
         fetchAndToggleProject(projectSlug);
     }
 });
+
+
+
+
+
+
+
+// Lilypads Parallax
+document.addEventListener('DOMContentLoaded', function() {
+    const lilypads = document.querySelector('#lilypads');
+    const figures = lilypads.querySelectorAll('figure');
+
+    function moveFigures(e) {
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+        const mouseX = e.clientX || centerX;
+        const mouseY = e.clientY || centerY;
+
+        figures.forEach((figure, index) => {
+            const bounds = figure.getBoundingClientRect();
+            const figCenterX = bounds.left + bounds.width / 2;
+            const figCenterY = bounds.top + bounds.height / 2;
+            const deltaX = mouseX - figCenterX;
+            const deltaY = mouseY - figCenterY;
+            const parallaxX = deltaX * (index + 1) * 0.02; // Increasing multiplier for X axis
+            const parallaxY = deltaY * (index + 1) * 0.02; // Increasing multiplier for Y axis
+            figure.style.transform = `translate(${parallaxX}px, ${parallaxY}px)`;
+        });
+    }
+
+    // Listen to mouse move event
+    document.addEventListener('mousemove', moveFigures);
+});
+
+

@@ -6,4 +6,4 @@ sections:
     type: pages
     template: project  # Replace with your specific template(s) if needed
     status: all
-    info: "{{ page.title }}"
+    info: "{{ page.authors }} {{ page.tags }} {{ page.date }}"

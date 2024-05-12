@@ -22,9 +22,9 @@ tabs:
           - image
           - gallery
 
-  details:
-    label: Details
-    fields:
-      title:
-        label: Title
-        type: text
+  # details:
+  #   label: Details
+  #   fields:
+  #     title:
+  #       label: Title
+  #       type: text

@@ -251,11 +251,14 @@ section#index h1 {
     column-gap: 20px;
     row-gap: 150px;
     padding-bottom: 100px;
+    position: relative;
 }
 #lilypads figure {
     margin: 0;
     padding: 0;
     cursor: pointer;
+    transition: transform 0.3s ease-out;
+    will-change: transform;
 }
 #lilypads figure:nth-child(1) {
     grid-column: 1/5;
