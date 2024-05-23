@@ -125,7 +125,7 @@
 
     <!-- Lilypads -->
     <div id="lilypads">
-        <?php foreach ($site->homepageProjects()->toPages() as $project): ?>
+        <?php foreach ($site->selectedProjects()->toPages() as $project): ?>
             <figure id="<?= $project->slug() ?>">
                 <?php
                 // Attempt to find the cover image
