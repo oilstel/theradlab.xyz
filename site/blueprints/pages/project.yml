@@ -5,7 +5,7 @@ tabs:
     label: Layout
     fields:
       layout:
-        label: Page Content
+        label: Project Content
         type: layout
         layouts:
           - "1/2, 1/2"  # Two-column layout
