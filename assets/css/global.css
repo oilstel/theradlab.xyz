@@ -237,7 +237,7 @@ section#index h1 {
     display: flex;
     flex-flow: row nowrap;
     gap: 28px;
-    padding: 3px 0px;
+    padding: 4px 0px;
     font-size: var(--p1-font-size);
     line-height: var(--p1-line-height);
     cursor: pointer;

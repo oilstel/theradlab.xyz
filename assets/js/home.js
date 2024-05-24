@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const aboutCloseButton = aboutSection.querySelector(".close-section");
     const contactCloseButton = contactSection.querySelector(".close-section");
     const indexCloseButton = indexSection.querySelector(".close-section");
+    const indexHeader = document.querySelectorAll('#index h1')[0];
 
     // Shared array to track selected projects
     const selectedProjects = [];
@@ -49,6 +50,9 @@ document.addEventListener("DOMContentLoaded", function () {
         toggleSection(indexSection, true);
     });
     indexCloseButton.addEventListener("click", function () {
+        toggleSection(indexSection, false);
+    });
+    indexHeader.addEventListener("click", function () {
         toggleSection(indexSection, false);
     });
 
