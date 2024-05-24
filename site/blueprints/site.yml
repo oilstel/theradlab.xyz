@@ -13,7 +13,6 @@ tabs:
         template:
           - project
 
-
   homepageTab:
     label: Lilypads
     sections:
@@ -39,7 +38,6 @@ tabs:
             max: 5
             sortable: true
 
-
   pagesTab:
     label: Pages
     sections:
@@ -51,3 +49,17 @@ tabs:
           - about  # Uncomment other templates as needed
           # - projects
           # - contact
+
+  otherTab:
+    label: Meta & SEO
+    sections:
+      seo:
+        label: SEO Settings
+        type: fields
+        fields:
+          siteDescription:
+            label: Site Description
+            type: textarea
+            width: 1/1
+            help: "Enter a brief description of your site that will show up under the title in search results."
+            buttons: false
