@@ -1,6 +1,5 @@
 <!-- Global JavaScript -->
-<?= js('assets/js/home.js') ?>
-<?= js('assets/js/global.js') ?>
+<?= js('assets/js/home.js?v=1.9') ?>
 
 </body>
 </html>
