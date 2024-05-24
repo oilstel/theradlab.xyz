@@ -1,17 +1,16 @@
 title: Site
 
 tabs:
-  projectsTab:
+  projects:
     label: Projects
     sections:
-      projects:
+      projectsQuert:
         label: All Projects
         type: pages
-        query: site.find('projects').children
+        parent: site.find('projects')
         info: "{{ page.authors }} {{ page.tags }} {{ page.date }}"
         image: page.cover.toFile() ?? page.images.first()
-        template:
-          - project
+        template: project
 
   homepageTab:
     label: Lilypads
