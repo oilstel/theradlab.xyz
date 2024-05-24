@@ -183,6 +183,7 @@ section#index h1 {
     text-transform: uppercase;
     font-weight: normal;
     text-align: center;
+    cursor: pointer;
 }
 #index-inner {
     font-family: var(--sans-serif-ff);
