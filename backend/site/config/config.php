@@ -12,7 +12,7 @@ header('Access-Control-Allow-Methods', 'GET, OPTIONS');
 return [
     'debug' => true,
     'panel' => [
-        'install' => false,
+        'install' => true,
     ],
     'api' => true, // Disable built-in API
     'routes' => [
