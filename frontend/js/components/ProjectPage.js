@@ -8,9 +8,9 @@ Vue.component('project-page', {
     template: `
       <div class="overlay">
         <section id="project">
-          <button class="close-section" @click="closeOverlay">Close</button>
-          <article v-if="project">
-            <h1>{{ project.title }}</h1>
+          <!-- <button class="close-section" @click="closeOverlay">Close</button> -->
+          <article v-if="project" class="page-content">
+            <h1 class="project-title">{{ project.title }}</h1>
             <div v-for="layout in project.layouts" v-html="layout"></div>
           </article>
         </section>

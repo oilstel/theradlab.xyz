@@ -1,65 +1,99 @@
 // assets/js/components/IndexPage.js
 Vue.component('index-page', {
     data() {
-      return {
-        filters: ['Article', 'Book', 'Performance'],
-        items: []
-      };
+        return {
+            searchQuery: '',
+            filters: [],
+            items: [],
+            activeFilters: [],
+            visitedProjects: [] // No need to load from or save to localStorage
+        };
     },
     template: `
       <div class="overlay">
         <section id="index">
-          <button class="close-section" @click="closeOverlay">Close</button>
-          <h1>Index</h1>
+          <!-- <button class="close-section" @click="closeOverlay">Close</button> -->
           <div id="index-inner">
             <div id="search-and-filters">
               <div id="search">
                 <span class="descriptor">Search by</span>
-                <input type="search" placeholder="anything">
+                <input type="search" v-model="searchQuery" placeholder="anything">
               </div>
               <div id="filters">
                 <span class="descriptor">Filter by</span>
                 <div class="filter" v-for="filter in filters" :key="filter">
-                  <input type="checkbox" :id="filter" name="filters[]" :value="filter">
+                  <input type="checkbox" :id="filter" name="filters[]" :value="filter" @change="toggleFilter(filter)">
                   <label :for="filter">{{ filter }}</label>
                 </div>
               </div>
             </div>
             <div id="index-items">
-              <div class="item" v-for="item in items" :key="item.slug" :id="item.slug">
-                <div class="title" @click="viewProject(item.slug)">{{ item.title }}</div>
+              <div class="item" 
+                   v-for="item in filteredItems" 
+                   :key="item.slug" 
+                   :id="item.slug"
+                   :class="{ visited: visitedProjects.includes(item.slug) }"
+                   @click="viewProject(item.slug)">
+                <div class="title">{{ item.title }}</div>
                 <div class="authors">{{ item.authors }}</div>
-                <div class="tag-and-date">{{ item.tags }}, {{ item.date }}</div>
+                <div class="tag-and-date">{{ item.tags.join(', ') }}, {{ item.date }}</div>
               </div>
             </div>
           </div>
         </section>
       </div>
     `,
+    computed: {
+        filteredItems() {
+            let filteredByTags = this.items;
+            if (this.activeFilters.length > 0) {
+                filteredByTags = this.items.filter(item => {
+                    return this.activeFilters.some(filter => item.tags.includes(filter));
+                });
+            }
+            if (this.searchQuery) {
+                return filteredByTags.filter(item => item.title.toLowerCase().includes(this.searchQuery.toLowerCase()));
+            }
+            return filteredByTags;
+        }
+    },
     created() {
-      this.fetchItems();
+        this.fetchItems();
     },
     methods: {
-      fetchItems() {
-        fetch(`${window.apiUrl}projects`)
-          .then(response => response.json())
-          .then(data => {
-            this.items = data.projects.map(project => ({
-              title: project.title,
-              authors: project.authors,
-              tags: project.tags,
-              date: project.date,
-              slug: project.slug
-            }));
-          })
-          .catch(error => console.error('Error fetching projects:', error));
-      },
-      viewProject(slug) {
-        this.$router.push({ name: 'project', params: { slug } });
-      },
-      closeOverlay() {
-        this.$router.push({ name: 'home' });
-      }
+        fetchItems() {
+            fetch(`${window.apiUrl}projects`)
+                .then(response => response.json())
+                .then(data => {
+                    this.items = data.projects.map(project => ({
+                        title: project.title,
+                        authors: project.authors,
+                        tags: project.tags.split(', '),
+                        date: project.date,
+                        slug: project.slug
+                    }));
+                    this.filters = [...new Set(this.items.flatMap(item => item.tags))];
+                })
+                .catch(error => console.error('Error fetching projects:', error));
+        },
+        viewProject(slug) {
+            this.markProjectAsVisited(slug);
+            this.$router.push({ name: 'project', params: { slug } });
+        },
+        closeOverlay() {
+            this.$router.push({ name: 'home' });
+        },
+        toggleFilter(filter) {
+            if (this.activeFilters.includes(filter)) {
+                this.activeFilters = this.activeFilters.filter(f => f !== filter);
+            } else {
+                this.activeFilters.push(filter);
+            }
+        },
+        markProjectAsVisited(slug) {
+            if (!this.visitedProjects.includes(slug)) {
+                this.visitedProjects.push(slug);
+            }
+        }
     }
-  });
-  
+});

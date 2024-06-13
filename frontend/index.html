@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Rad Lab</title>
     <!-- <link rel="stylesheet" href="css/global.css"> -->
+    <link rel="stylesheet" href="/css/fonts.css"> 
     <link rel="stylesheet" href="/css/style.css"> 
     <script>
         // Set the API URL based on the hostname
@@ -17,8 +18,8 @@
 <body>
     <div id="app">
         <navigation></navigation>
+        <router-view v-if="!showHomePage"></router-view>
         <home-page></home-page>
-        <router-view></router-view>
     </div>
     <script src="/js/vue/vue-2.js"></script>
     <script src="/js/vue/vue-router.js"></script>

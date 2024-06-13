@@ -8,7 +8,7 @@ Vue.component('contact-page', {
     template: `
       <div class="overlay">
         <section id="contact">
-          <button class="close-section" @click="closeOverlay">Close</button>
+          <!-- <button class="close-section" @click="closeOverlay">Close</button> -->
           <article>
             {{ contactInfo }}
             contact

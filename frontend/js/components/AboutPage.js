@@ -10,7 +10,7 @@ Vue.component('about-page', {
     template: `
       <div class="overlay">
         <section id="about">
-          <button class="close-section" @click="closeOverlay">Close</button>
+          <!-- <button class="close-section" @click="closeOverlay">Close</button> -->
           <article class="page-content">
             <div id="intro" v-html="intro"></div>
             <div id="quick-links" v-html="quickLinks"></div>

@@ -1,47 +1,41 @@
 // assets/js/components/HomePage.js
 Vue.component('home-page', {
     data() {
-      return {
-        lilypads: []
-      };
+        return {
+            lilypads: []
+        };
     },
     template: `
       <section id="home">
-        <h1>Home Page</h1>
         <div id="lilypads">
-          <div v-for="lilypad in lilypads" :key="lilypad.title" class="lilypad">
-            <h2>{{ lilypad.title }}</h2>
-            <p>{{ lilypad.authors }}</p>
-            <p>{{ lilypad.tags }}, {{ lilypad.date }}</p>
-            <img :src="lilypad.image" :alt="lilypad.title">
-            <a :href="lilypad.url" @click.prevent="viewProject(lilypad.slug)">View Project</a>
-          </div>
+          <figure v-for="lilypad in lilypads" :key="lilypad.slug" :id="lilypad.slug" @click="viewProject(lilypad.slug)">
+            <img v-if="lilypad.image" :src="lilypad.image" :alt="lilypad.title">
+            <figcaption>{{ lilypad.title }}</figcaption>
+          </figure>
         </div>
       </section>
     `,
     created() {
-      this.fetchProjects();
+        this.fetchProjects();
     },
     methods: {
-      fetchProjects() {
-        fetch(`${window.apiUrl}home`)
-          .then(response => response.json())
-          .then(data => {
-            this.lilypads = data.lilypads.map(lilypad => ({
-              title: lilypad.title,
-              authors: lilypad.authors,
-              tags: lilypad.tags,
-              date: lilypad.date,
-              image: lilypad.image,
-              url: lilypad.url,
-              slug: lilypad.url.split('/').pop()
-            }));
-          })
-          .catch(error => console.error('Error fetching projects:', error));
-      },
-      viewProject(slug) {
-        this.$router.push({ name: 'project', params: { slug } });
-      }
+        fetchProjects() {
+            fetch(`${window.apiUrl}home`)
+                .then(response => response.json())
+                .then(data => {
+                    this.lilypads = data.lilypads.map(lilypad => ({
+                        title: lilypad.title,
+                        authors: lilypad.authors,
+                        tags: lilypad.tags,
+                        date: lilypad.date,
+                        image: lilypad.image,
+                        slug: lilypad.slug
+                    }));
+                })
+                .catch(error => console.error('Error fetching projects:', error));
+        },
+        viewProject(slug) {
+            this.$router.push({ name: 'project', params: { slug } });
+        }
     }
-  });
-  
+});
