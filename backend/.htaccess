@@ -5,17 +5,17 @@
 <IfModule mod_rewrite.c>
 
 # enable awesome urls. i.e.:
-# http://yourdomain.com/about-us/team
+# http://yourdomain.com/cms/about-us/team
 RewriteEngine on
 
 # make sure to set the RewriteBase correctly
 # if you are running the site in a subfolder;
 # otherwise links or the entire site will break.
 #
-# If your homepage is http://yourdomain.com/mysite,
+# If your homepage is http://yourdomain.com/cms,
 # set the RewriteBase to:
 #
-# RewriteBase /mysite
+RewriteBase /cms
 
 # In some environments it's necessary to
 # set the RewriteBase to:
