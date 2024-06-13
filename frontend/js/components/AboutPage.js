@@ -1,4 +1,3 @@
-// assets/js/components/AboutPage.js
 Vue.component('about-page', {
     data() {
       return {
@@ -8,16 +7,16 @@ Vue.component('about-page', {
       };
     },
     template: `
-      <div class="overlay">
-        <section id="about">
-          <!-- <button class="close-section" @click="closeOverlay">Close</button> -->
-          <article class="page-content">
-            <div id="intro" v-html="intro"></div>
-            <div id="quick-links" v-html="quickLinks"></div>
-            <div v-for="layout in layouts" :key="layout.id" v-html="layout"></div>
-          </article>
-        </section>
-      </div>
+      <transition name="overlay" appear>
+        <div class="overlay about">
+          <section id="about">
+            <h1>About</h1>
+            <div v-html="intro"></div>
+            <div v-html="quickLinks"></div>
+            <div v-html="layouts.join('')"></div>
+          </section>
+        </div>
+      </transition>
     `,
     created() {
       this.fetchAbout();

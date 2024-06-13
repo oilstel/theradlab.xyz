@@ -6,42 +6,43 @@ Vue.component('index-page', {
             filters: [],
             items: [],
             activeFilters: [],
-            visitedProjects: [] // No need to load from or save to localStorage
+            visitedProjects: []
         };
     },
     template: `
-      <div class="overlay">
-        <section id="index">
-          <!-- <button class="close-section" @click="closeOverlay">Close</button> -->
-          <div id="index-inner">
-            <div id="search-and-filters">
-              <div id="search">
-                <span class="descriptor">Search by</span>
-                <input type="search" v-model="searchQuery" placeholder="anything">
+      <transition name="overlay" appear>
+        <div class="overlay index">
+          <section id="index">
+            <div id="index-inner">
+              <div id="search-and-filters">
+                <div id="search">
+                  <span class="descriptor">Search by</span>
+                  <input type="search" v-model="searchQuery" placeholder="anything">
+                </div>
+                <div id="filters">
+                  <span class="descriptor">Filter by</span>
+                  <div class="filter" v-for="filter in filters" :key="filter">
+                    <input type="checkbox" :id="filter" name="filters[]" :value="filter" @change="toggleFilter(filter)">
+                    <label :for="filter">{{ filter }}</label>
+                  </div>
+                </div>
               </div>
-              <div id="filters">
-                <span class="descriptor">Filter by</span>
-                <div class="filter" v-for="filter in filters" :key="filter">
-                  <input type="checkbox" :id="filter" name="filters[]" :value="filter" @change="toggleFilter(filter)">
-                  <label :for="filter">{{ filter }}</label>
+              <div id="index-items">
+                <div class="item" 
+                     v-for="item in filteredItems" 
+                     :key="item.slug" 
+                     :id="item.slug"
+                     :class="{ visited: visitedProjects.includes(item.slug) }"
+                     @click="viewProject(item.slug)">
+                  <div class="title">{{ item.title }}</div>
+                  <div class="authors">{{ item.authors }}</div>
+                  <div class="tag-and-date">{{ item.tags.join(', ') }}, {{ item.date }}</div>
                 </div>
               </div>
             </div>
-            <div id="index-items">
-              <div class="item" 
-                   v-for="item in filteredItems" 
-                   :key="item.slug" 
-                   :id="item.slug"
-                   :class="{ visited: visitedProjects.includes(item.slug) }"
-                   @click="viewProject(item.slug)">
-                <div class="title">{{ item.title }}</div>
-                <div class="authors">{{ item.authors }}</div>
-                <div class="tag-and-date">{{ item.tags.join(', ') }}, {{ item.date }}</div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
+          </section>
+        </div>
+      </transition>
     `,
     computed: {
         filteredItems() {
@@ -81,7 +82,7 @@ Vue.component('index-page', {
             this.$router.push({ name: 'project', params: { slug } });
         },
         closeOverlay() {
-            this.$router.push({ name: 'home' });
+            this.$emit('toggle-overlay', null); // Toggle the index overlay off
         },
         toggleFilter(filter) {
             if (this.activeFilters.includes(filter)) {

@@ -445,6 +445,40 @@ section#index h1 {
 }
 
 
+/* Animation */
+
+/* Add these styles to your global CSS file or the relevant component styles */
+
+/* General overlay transition */
+.overlay-enter-active, .overlay-leave-active {
+    transition: transform 0.5s ease;
+  }
+  
+  /* Slide in from left for Index */
+  .overlay-enter.index, .overlay-leave-to.index {
+    transform: translateX(-100%);
+  }
+  
+  /* Slide in from right for About */
+  .overlay-enter.about, .overlay-leave-to.about {
+    transform: translateX(100%);
+  }
+  
+  /* Slide up from bottom for Contact */
+  .overlay-enter.contact, .overlay-leave-to.contact {
+    transform: translateY(100%);
+  }
+  
+  /* Ensure the overlay is initially hidden off-screen */
+  .overlay-enter, .overlay-leave-to {
+    transform: translateX(0%);
+  }
+  
+  
+  
+
+
+
 /* Tablet */
 @media(max-width:838px) {
     /* Navigation */

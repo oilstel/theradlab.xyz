@@ -17,7 +17,7 @@
 </head>
 <body>
     <div id="app">
-        <navigation></navigation>
+        <navigation @toggle-overlay="toggleOverlay"></navigation>
         <router-view v-if="!showHomePage"></router-view>
         <home-page></home-page>
     </div>

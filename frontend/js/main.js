@@ -17,23 +17,28 @@ new Vue({
     el: '#app',
     router,
     data: {
+        activeOverlay: null,
         showHomePage: true
     },
     watch: {
-        $route(to, from) {
+        $route(to) {
             this.showHomePage = to.path === '/';
         }
     },
     methods: {
-        updateHomePageVisibility() {
-            this.showHomePage = this.$route.path === '/';
+        toggleOverlay(overlay) {
+            if (this.activeOverlay === overlay) {
+                this.activeOverlay = null;
+                this.showHomePage = true;
+                this.$router.push({ name: 'home' });
+            } else {
+                this.activeOverlay = overlay;
+                this.showHomePage = false;
+                this.$router.push({ name: overlay });
+            }
         }
     },
     created() {
-        this.updateHomePageVisibility();
-        this.$router.beforeEach((to, from, next) => {
-            this.showHomePage = to.path === '/';
-            next();
-        });
+        this.showHomePage = this.$route.path === '/';
     }
 });

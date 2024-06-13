@@ -1,4 +1,3 @@
-// assets/js/components/ContactPage.js
 Vue.component('contact-page', {
     data() {
       return {
@@ -6,15 +5,14 @@ Vue.component('contact-page', {
       };
     },
     template: `
-      <div class="overlay">
-        <section id="contact">
-          <!-- <button class="close-section" @click="closeOverlay">Close</button> -->
-          <article>
-            {{ contactInfo }}
-            contact
-          </article>
-        </section>
-      </div>
+      <transition name="overlay" appear>
+        <div class="overlay contact">
+          <section id="contact">
+            <h1>Contact</h1>
+            <div v-html="contactInfo"></div>
+          </section>
+        </div>
+      </transition>
     `,
     created() {
       this.fetchContact();
