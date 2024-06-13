@@ -6,6 +6,7 @@ Icon
 # Temporary files
 # ---------------
 
+/backend/media
 /backend/media/*
 !/backend/media/index.html
 
