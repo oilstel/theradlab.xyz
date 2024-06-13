@@ -15,7 +15,7 @@ RewriteEngine on
 # If your homepage is http://yourdomain.com/cms,
 # set the RewriteBase to:
 #
-RewriteBase /cms
+RewriteBase /
 
 # In some environments it's necessary to
 # set the RewriteBase to:
