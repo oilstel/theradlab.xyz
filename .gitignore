@@ -1,19 +1,18 @@
 # System files
 # ------------
-
 Icon
 .DS_Store
 
 # Temporary files
 # ---------------
 
-/media/*
-!/media/index.html
+/backend/media/*
+!/backend/media/index.html
 
 # Content files
 # ---------------
-/content
-/content/*
+/backend/content
+/backend/content/*
 
 # Lock files
 # ---------------
@@ -34,22 +33,22 @@ Icon
 # Cache Files
 # ---------------
 
-/site/cache/*
-!/site/cache/index.html
+/backend/site/cache/*
+!/backend/site/cache/index.html
 
 # Accounts
 # ---------------
 
-/site/accounts/*
-!/site/accounts/index.html
+/backend/site/accounts/*
+!/backend/site/accounts/index.html
 
 # Sessions
 # ---------------
 
-/site/sessions/*
-!/site/sessions/index.html
+/backend/site/sessions/*
+!/backend/site/sessions/index.html
 
 # License
 # ---------------
 
-/site/config/.license
+/backend/site/config/.license

@@ -1,16 +1,14 @@
 <?php
 
-// Get the current project page
-$page = page();
+$kirby->response()->type('application/json');
 
-// Prepare data in an associative array, excluding HTML content
+// Get the 'about' page
+$page = page('about');
+
+// Prepare data in an associative array
 $data = [
-    'title' => (string)$page->title(), // Retrieve the title
-
-    // Retrieve the cover image's URL if available
-    'cover' => $page->cover()->isNotEmpty() ? $page->cover()->first()->url() : null,
-
-    // Initialize an empty array to store layouts
+    'intro' => (string)$page->intro(),
+    'quickLinks' => (string)$page->quickLinks(),
     'layouts' => []
 ];
 
@@ -60,3 +58,4 @@ foreach ($page->layout()->toLayouts() as $layout) {
 
 // Output the entire data array as JSON
 echo json_encode($data);
+?>
