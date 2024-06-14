@@ -47,7 +47,7 @@ new Vue({
             console.log('Document body overflow:', document.body.style.overflow); // Debug log
         },
         checkAndSetBodyOverflow(route) {
-            const overlays = ['about', 'contact', 'index'];
+            const overlays = ['about', 'contact', 'index', 'project'];
             if (overlays.includes(route.name)) {
                 this.activeOverlay = route.name;
                 document.body.style.overflow = 'hidden'; // Add overflow hidden
