@@ -344,7 +344,9 @@ section#index h1 {
 }
 
 /* Contact */
-
+#contact {
+    text-align: center;
+}
 
 
 /* Visible states */
@@ -378,8 +380,8 @@ section#index h1 {
 .page-content {
     max-width: 888px;
     margin: 0 auto;
-    margin-top: 80px;
-    padding: 24px;
+    /* margin-top: 80px;
+    padding: 24px; */
 }
 .page-content .layout-grid {
     display: grid;
@@ -451,33 +453,31 @@ section#index h1 {
 
 /* Animation */
 
-/* Add these styles to your global CSS file or the relevant component styles */
-
 /* General overlay transition */
 .overlay-enter-active, .overlay-leave-active {
     transition: transform 0.5s ease;
-  }
+}
   
-  /* Slide in from left for Index */
-  .overlay-enter.index, .overlay-leave-to.index {
+/* Slide in from left for Index */
+.overlay-enter.index, .overlay-leave-to.index {
     transform: translateX(-100%);
-  }
-  
-  /* Slide in from right for About */
-  .overlay-enter.about, .overlay-leave-to.about {
+}
+
+/* Slide in from right for About */
+.overlay-enter.about, .overlay-leave-to.about {
     transform: translateX(100%);
-  }
-  
-  /* Slide up from bottom for Contact */
-  .overlay-enter.contact, .overlay-leave-to.contact {
+}
+
+/* Slide up from bottom for Contact */
+.overlay-enter.contact, .overlay-leave-to.contact {
     transform: translateY(100%);
-  }
-  
-  /* Ensure the overlay is initially hidden off-screen */
-  .overlay-enter, .overlay-leave-to {
+}
+
+/* Ensure the overlay is initially hidden off-screen */
+.overlay-enter, .overlay-leave-to {
     transform: translateX(0%);
-  }
-  
+}
+
   
   
 
@@ -515,6 +515,10 @@ section#index h1 {
         right: 24px;
         bottom: 24px;
         transform: initial;
+    }
+    /* Section */
+    section {
+        padding: 0 24px;
     }
     /* Index */
     section#index h1 {
@@ -657,6 +661,10 @@ section#index h1 {
     section#index h1 {
         font-size: var(--h2-mobile-font-size);
         line-height: var(--h2-mobile-line-height);
+    }
+    /* Contact */
+    #contact {
+        text-align: left;
     }
     /* Lilypads */
     #lilypads {

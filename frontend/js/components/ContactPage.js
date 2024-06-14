@@ -1,16 +1,17 @@
 Vue.component('contact-page', {
     data() {
       return {
-        contactInfo: ''
+        layouts: []
       };
     },
     template: `
       <transition name="overlay" appear>
         <div class="overlay contact">
-          <section id="contact">
-            <h1>Contact</h1>
-            <div v-html="contactInfo"></div>
-          </section>
+            <section>
+                <article id="contact" class="page-content">
+                    <div v-html="layouts.join('')"></div>
+                </article>
+            </section>
         </div>
       </transition>
     `,
@@ -22,7 +23,7 @@ Vue.component('contact-page', {
         fetch(`${window.apiUrl}contact`)
           .then(response => response.json())
           .then(data => {
-            this.contactInfo = data.contactInfo;
+            this.layouts = data.layouts;
           })
           .catch(error => console.error('Error fetching contact content:', error));
       },

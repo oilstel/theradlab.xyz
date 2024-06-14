@@ -27,11 +27,12 @@ new Vue({
     watch: {
         $route(to) {
             this.showHomePage = to.path === '/';
+            this.checkAndSetBodyOverflow(to);
         }
     },
     methods: {
         toggleOverlay(overlay) {
-            console.log('toggleOverlay called with:', overlay);
+            console.log('toggleOverlay called with:', overlay); // Debug log
             if (this.activeOverlay === overlay) {
                 this.activeOverlay = null;
                 this.showHomePage = true;
@@ -43,9 +44,21 @@ new Vue({
                 document.body.style.overflow = 'hidden'; // Add overflow hidden
                 this.$router.push({ name: overlay });
             }
+            console.log('Document body overflow:', document.body.style.overflow); // Debug log
+        },
+        checkAndSetBodyOverflow(route) {
+            const overlays = ['about', 'contact', 'index'];
+            if (overlays.includes(route.name)) {
+                this.activeOverlay = route.name;
+                document.body.style.overflow = 'hidden'; // Add overflow hidden
+            } else {
+                this.activeOverlay = null;
+                document.body.style.overflow = ''; // Remove overflow hidden
+            }
         }
     },
     created() {
         this.showHomePage = this.$route.path === '/';
+        this.checkAndSetBodyOverflow(this.$route); // Check and set overflow when page loads
     }
 });
