@@ -15,8 +15,8 @@ Vue.component('project-page', {
             <h1 class="project-title">{{ project.title }}</h1>
             <div v-for="layout in project.layouts" v-html="layout"></div>
             <div class="pagination">
-              <button @click="goToPrevious" :disabled="currentIndex === 0">Previous</button>
-              <button @click="goToNext" :disabled="currentIndex === projects.length - 1">Next</button>
+              <button id="prev" @click="goToPrevious" :disabled="currentIndex === 0">Previous</button>
+              <button id="next" @click="goToNext" :disabled="currentIndex === projects.length - 1">Next</button>
             </div>
           </article>
         </section>

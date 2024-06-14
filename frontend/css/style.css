@@ -276,6 +276,42 @@ section#index h1 {
     text-overflow: ellipsis;  /* Add ellipsis to text that overflows */
 }
 
+/* Pagination */
+.pagination {
+    display: flex;
+    gap: 30px;
+    margin: 30px 0;
+}
+.pagination button {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    font-size: var(--p1-font-size);
+    color: var(--modem);
+    cursor: pointer;
+}
+.pagination button[disabled="disabled"] {
+    display: none;
+}
+.pagination button#prev::before, .pagination button#next::after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-image: url('/images/arrow-left.svg');
+    background-size: contain;
+    background-position: center center;
+}
+.pagination button#prev::before {
+    background-image: url('/images/arrow-left.svg');
+}
+.pagination button#next::after {
+    background-image: url('/images/arrow-right.svg');
+}
+
 /* Lilypads */
 #lilypads {
     display: grid;
