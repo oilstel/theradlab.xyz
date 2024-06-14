@@ -1,3 +1,5 @@
+// assets/js/components/Navigation.js
+
 Vue.component('navigation', {
     template: `
       <nav>
@@ -17,8 +19,10 @@ Vue.component('navigation', {
       toggleIndex() {
         if (this.$route.name !== 'index') {
           this.$router.push({ name: 'index' });
+          document.body.style.overflow = 'hidden';
         } else {
           this.$emit('toggle-overlay', null); // Close the overlay if it's open
+          document.body.style.overflow = '';
         }
       }
     }

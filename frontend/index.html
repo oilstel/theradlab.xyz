@@ -4,6 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Rad Lab</title>
+    <meta name="description" content="Art-making, commercialization, education, outreach, and research at the intersection of robotics and dance.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/RADLab_Favicon.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Rab Lab">
+    <meta name="twitter:description" content="Art-making, commercialization, education, outreach, and research at the intersection of robotics and dance.">
+    <meta name="twitter:image" content="https://radlab.xyz/images/RADLab_SocialShare.png">
+
+    <!-- Facebook -->
+    <meta property="og:title" content="Rab Lab">
+    <meta property="og:description" content="Art-making, commercialization, education, outreach, and research at the intersection of robotics and dance.">
+    <meta property="og:image" content="https://radlab.xyz/images/RADLab_SocialShare.png">
+    <meta property="og:url" content="https://radlab.xyz">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Rad Lab">
+
     <!-- <link rel="stylesheet" href="css/global.css"> -->
     <link rel="stylesheet" href="/css/fonts.css"> 
     <link rel="stylesheet" href="/css/style.css"> 
@@ -21,10 +40,12 @@
         <router-view v-if="!showHomePage"></router-view>
         <home-page></home-page>
     </div>
+
+    <!-- Load Vue -->
     <script src="/js/vue/vue-2.js"></script>
     <script src="/js/vue/vue-router.js"></script>
 
-    <!-- Load Vue components in the correct order -->
+    <!-- Vue components-->
     <script src="/js/components/Navigation.js"></script>
     <script src="/js/components/HomePage.js"></script>
     <script src="/js/components/IndexPage.js"></script>
@@ -32,7 +53,7 @@
     <script src="/js/components/ContactPage.js"></script>
     <script src="/js/components/ProjectPage.js"></script>
 
-    <!-- Initialize Vue and Vue Router -->
+    <!-- Initialize Vue -->
     <script src="/js/main.js"></script>
 </body>
 </html>
