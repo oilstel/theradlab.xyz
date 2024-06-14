@@ -19,8 +19,6 @@ Vue.component('project-page', {
               <button @click="goToNext" :disabled="currentIndex === projects.length - 1">Next</button>
             </div>
           </article>
-          <div v-else-if="loading">Loading...</div>
-          <div v-else>Project not found</div>
         </section>
       </div>
     `,

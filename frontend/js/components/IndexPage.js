@@ -1,4 +1,3 @@
-// assets/js/components/IndexPage.js
 Vue.component('index-page', {
     data() {
         return {
@@ -6,7 +5,7 @@ Vue.component('index-page', {
             filters: [],
             items: [],
             activeFilters: [],
-            visitedProjects: []
+            visitedProjects: this.$root.visitedProjects || [] // Initialize from root
         };
     },
     template: `
@@ -80,9 +79,10 @@ Vue.component('index-page', {
         viewProject(slug) {
             this.markProjectAsVisited(slug);
             this.$router.push({ name: 'project', params: { slug } });
+            this.closeOverlay();
         },
         closeOverlay() {
-            this.$emit('toggle-overlay', null); // Toggle the index overlay off
+            this.$emit('toggle-overlay', null); // Emit event to toggle the overlay off
         },
         toggleFilter(filter) {
             if (this.activeFilters.includes(filter)) {
@@ -95,6 +95,7 @@ Vue.component('index-page', {
             if (!this.visitedProjects.includes(slug)) {
                 this.visitedProjects.push(slug);
             }
+            this.$root.visitedProjects = this.visitedProjects; // Sync with root
         }
     }
 });

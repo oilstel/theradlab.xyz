@@ -152,6 +152,11 @@ img {
     background-color: rgba(255, 255, 255, 0.3);
     z-index: 999;
 } */
+section {
+    padding: 0 111px;
+    margin-top: 160px;
+    padding-bottom: 160px;
+}
 section button.close-section {
     position: fixed;
     top: 24px;
@@ -196,7 +201,6 @@ section#index h1 {
 }
 #index-inner {
     font-family: var(--sans-serif-ff);
-    padding: 20px;
     margin-top: 100px;
 }
 #search-and-filters {

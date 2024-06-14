@@ -9,12 +9,13 @@ Vue.component('about-page', {
     template: `
       <transition name="overlay" appear>
         <div class="overlay about">
-          <section id="about">
-            <h1>About</h1>
-            <div v-html="intro"></div>
-            <div v-html="quickLinks"></div>
-            <div v-html="layouts.join('')"></div>
-          </section>
+            <section>
+                <article id="about" class="page-content">
+                    <div v-html="intro" id="intro"></div>
+                    <div v-html="quickLinks" id="quick-links"></div>
+                    <div v-html="layouts.join('')"></div>
+                </article>
+            </section>
         </div>
       </transition>
     `,

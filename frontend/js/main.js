@@ -1,5 +1,8 @@
 // assets/js/main.js
 
+Vue.config.devtools = true;
+Vue.config.productionTip = false;
+
 const routes = [
     { path: '/', component: Vue.component('home-page'), name: 'home' },
     { path: '/index', component: Vue.component('index-page'), name: 'index' },
@@ -18,7 +21,8 @@ new Vue({
     router,
     data: {
         activeOverlay: null,
-        showHomePage: true
+        showHomePage: true,
+        visitedProjects: []
     },
     watch: {
         $route(to) {
