@@ -24,7 +24,7 @@ tabs:
             label: ' '
             type: info
             text: |
-              Choose five projects to populate the lilypads on the homepage. You can also order the projects using the handle in the corner of each project's card.
+              Choose projects to populate the lilypads on the homepage. You can also order the projects using the handle in the corner of each project's card.
       homepageProjects:
         label: Lilypads
         type: fields
@@ -36,7 +36,7 @@ tabs:
             size: small
             query: site.find('projects').children.listed
             multiple: true
-            max: 5
+            # max: 5
             sortable: true
 
   pagesTab:
