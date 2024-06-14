@@ -511,6 +511,7 @@ section#index h1 {
     }
     nav a#contact-btn {
         top: initial;
+        left: initial;
         right: 24px;
         bottom: 24px;
         transform: initial;
