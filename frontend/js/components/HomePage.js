@@ -2,6 +2,7 @@
 Vue.component('home-page', {
     data() {
         return {
+            pageTitle: 'Rad Lab',
             lilypads: []
         };
     },
@@ -30,6 +31,7 @@ Vue.component('home-page', {
                         image: lilypad.image,
                         slug: lilypad.slug
                     }));
+                    document.title = this.pageTitle;
                 })
                 .catch(error => console.error('Error fetching projects:', error));
         },

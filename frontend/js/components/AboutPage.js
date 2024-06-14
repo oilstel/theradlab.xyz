@@ -1,6 +1,7 @@
 Vue.component('about-page', {
     data() {
       return {
+        pageTitle: 'About – Rad Lab',
         intro: '',
         quickLinks: '',
         layouts: []
@@ -30,6 +31,7 @@ Vue.component('about-page', {
             this.intro = data.intro;
             this.quickLinks = data.quickLinks;
             this.layouts = data.layouts;
+            document.title = this.pageTitle;
           })
           .catch(error => console.error('Error fetching about content:', error));
       },

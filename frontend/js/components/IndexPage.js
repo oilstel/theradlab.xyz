@@ -1,6 +1,7 @@
 Vue.component('index-page', {
     data() {
         return {
+            pageTitle: 'Index – Rad Lab',
             searchQuery: '',
             filters: [],
             items: [],
@@ -73,6 +74,7 @@ Vue.component('index-page', {
                         slug: project.slug
                     }));
                     this.filters = [...new Set(this.items.flatMap(item => item.tags))];
+                    document.title = this.pageTitle;
                 })
                 .catch(error => console.error('Error fetching projects:', error));
         },

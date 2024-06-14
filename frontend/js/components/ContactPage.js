@@ -1,6 +1,7 @@
 Vue.component('contact-page', {
     data() {
       return {
+        pageTitle: 'Contact – Rad Lab',
         layouts: []
       };
     },
@@ -24,6 +25,7 @@ Vue.component('contact-page', {
           .then(response => response.json())
           .then(data => {
             this.layouts = data.layouts;
+            document.title = this.pageTitle;
           })
           .catch(error => console.error('Error fetching contact content:', error));
       },

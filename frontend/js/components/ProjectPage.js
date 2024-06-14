@@ -2,6 +2,7 @@
 Vue.component('project-page', {
     data() {
       return {
+        pageTitle: 'Rad Lab',
         project: null,
         projects: [],
         currentIndex: 0,
