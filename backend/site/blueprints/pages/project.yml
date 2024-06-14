@@ -1,6 +1,6 @@
 title: Project
 options:
-  preview: http://68.183.58.246/{{ page.slug }}
+  preview: http://68.183.58.246/projects/{{ page.slug }}
 
 tabs:
   content:
