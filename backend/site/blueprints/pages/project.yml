@@ -20,30 +20,47 @@ tabs:
           
   details:
     label: Details
-    fields:
-      title:
-        label: Title
-        type: text
-      cover:
-        label: Cover Image
-        type: files
-        multiple: false
-        layout: cards
-        help: "Select an image to use as the cover of this project."
-      authors:
-        label: Authors
-        type: tags
-        help: "Add the names of the authors for this project, separated by commas."
-        separator: ","
-      date:
-        label: Date
-        type: number
-      tags:
-        label: Type
-        type: tags
-        help: "Add a category for this project."
-        separator: ","
-        max: 1
+    columns:
+      - width: 1/2
+        fields:
+          title:
+            label: Title
+            type: text
+          cover:
+            label: Cover Image
+            type: files
+            multiple: false
+            layout: cards
+            help: "Select an image to use as the cover of this project."
+          authors:
+            label: Authors
+            type: tags
+            help: "Add the names of the authors for this project, separated by commas."
+            separator: ","
+      - width: 1/2
+        fields:
+          displayAsTextLilypad:
+            label: Display as text lilypad
+            type: toggle
+          lilypadSubtitle:
+            label: Lilypad Subtitle
+            type: text
+          lineAfterSubtitle:
+            type: line
+          date:
+            label: Date
+            type: number
+          tags:
+            label: Type
+            type: tags
+            help: "Add a category for this project."
+            separator: ","
+            max: 1
+          lineBeforeHideFromIndex:
+            type: line
+          hideFromIndex:
+            label: Hide from Index
+            type: toggle
 
   filesTab:
     label: Files

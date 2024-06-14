@@ -17,7 +17,9 @@ foreach ($lilypads as $lilypad) {
         'tags' => $lilypad->tags()->value(),
         'date' => $lilypad->date()->value(),
         'image' => $lilypad->cover()->toFile() ? $lilypad->cover()->toFile()->url() : ($lilypad->images()->first() ? $lilypad->images()->first()->url() : null),
-        'slug' => $lilypad->slug()
+        'slug' => $lilypad->slug(),
+        'text_lilypad' => $lilypad->displayAsTextLilypad()->toBool(), // Convert boolean to JSON-compatible format
+        'subtitle' => $lilypad->lilypadSubtitle()->value()
     ];
 }
 
