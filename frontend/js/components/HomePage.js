@@ -10,7 +10,6 @@ Vue.component('home-page', {
         <div id="lilypads">
           <figure v-for="lilypad in lilypads" :key="lilypad.slug" :id="lilypad.slug" @click="viewProject(lilypad.slug)">
             <img v-if="lilypad.image" :src="lilypad.image" :alt="lilypad.title">
-            <figcaption>{{ lilypad.title }}</figcaption>
           </figure>
         </div>
       </section>
