@@ -1,0 +1,11 @@
+title: External Link
+name: external-link
+icon: link
+label: "{{ title }} - {{ url }}"
+fields:
+  title:
+    label: Link Title
+    type: text
+  url:
+    label: URL
+    type: url

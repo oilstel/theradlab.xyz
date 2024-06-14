@@ -17,6 +17,7 @@ tabs:
           - text
           - image
           - gallery
+          - external-link
           
   details:
     label: Details

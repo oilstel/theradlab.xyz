@@ -496,6 +496,26 @@ section#index h1 {
 .page-content .block-type-image {
     margin-bottom: 12px;
 }
+.page-content .block-type-external-link {
+    font-family: var(--sans-serif-ff);
+    font-size: var(--p1-font-size);
+    line-height: var(--p1-line-height);
+    margin: 10px 0;
+}
+.page-content .block-type-external-link a {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.page-content .block-type-external-link a::after {
+    content: '';
+    display: block;
+    width: 15px;
+    height: 15px;
+    background-image: url('/images/arrow-link.svg');
+    background-size: contain;
+    background-position: center center;
+}
 
 
 /* Animation */

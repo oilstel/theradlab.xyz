@@ -44,6 +44,15 @@ foreach ($page->layout()->toLayouts() as $layout) {
                     // Create regular heading
                     $layoutHtml .= "<div class=\"block block-type-heading\"><h2 id=\"$headerId\">$text</h2></div>";
                 }
+            } elseif ($block->type() == 'external-link') {
+                // Retrieve data from the external link block
+                $title = $block->title()->html();
+                $url = $block->url()->value();
+
+                // Create external link block
+                $layoutHtml .= '<div class="block block-type-external-link">';
+                $layoutHtml .= '<a href="' . esc($url) . '" target="_blank" rel="noopener noreferrer">' . $title . '</a>';
+                $layoutHtml .= '</div>';
             } else {
                 // Default handling for other block types
                 $layoutHtml .= '<div class="block block-type-' . esc($block->type()) . '">' . $block->toHtml() . '</div>';
@@ -63,4 +72,3 @@ foreach ($page->layout()->toLayouts() as $layout) {
 
 // Output the entire data array as JSON
 echo json_encode($data);
-?>
