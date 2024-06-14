@@ -1,4 +1,6 @@
-title: About
+title: Contact
+options:
+  preview: http://68.183.58.246/{{ page.slug }}
 
 tabs:
   content:

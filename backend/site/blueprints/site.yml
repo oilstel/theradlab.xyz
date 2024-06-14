@@ -1,4 +1,6 @@
 title: Site
+options:
+  preview: http://68.183.58.246
 
 tabs:
   projects:

@@ -1,4 +1,6 @@
 title: Projects
+options:
+  preview: http://68.183.58.246/{{ page.slug }}
 
 sections:
   projectsList:
