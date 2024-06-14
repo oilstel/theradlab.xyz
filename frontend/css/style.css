@@ -417,7 +417,6 @@ section#index h1 {
 .page-content {
     max-width: 888px;
     margin: 0 auto;
-    padding-bottom: 100px;
     /* margin-top: 80px;
     padding: 24px; */
 }
@@ -554,6 +553,9 @@ section#index h1 {
         bottom: 24px;
         transform: initial;
     }
+    .overlay {
+        padding-bottom: 100px;
+    }
     /* Section */
     section {
         padding: 0 24px;
@@ -569,6 +571,9 @@ section#index h1 {
     #search-and-filters {
         flex-flow: column nowrap;
         gap: 20px;
+    }
+    #index-inner {
+        margin-top: 0;
     }
     #index-items {
         gap: 0;
