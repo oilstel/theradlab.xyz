@@ -1,7 +1,8 @@
+// IndexPage.js
 Vue.component('index-page', {
     data() {
         return {
-            pageTitle: 'Index – Rad Lab',
+            pageTitle: 'Index – Rad Lab',
             searchQuery: '',
             filters: [],
             items: [],
@@ -10,39 +11,35 @@ Vue.component('index-page', {
         };
     },
     template: `
-      <transition name="overlay" appear>
-        <div class="overlay index">
-          <section id="index">
-            <div id="index-inner">
-              <div id="search-and-filters">
-                <div id="search">
-                  <span class="descriptor">Search by</span>
-                  <input type="search" v-model="searchQuery" placeholder="anything">
-                </div>
-                <div id="filters">
-                  <span class="descriptor">Filter by</span>
-                  <div class="filter" v-for="filter in filters" :key="filter">
-                    <input type="checkbox" :id="filter" name="filters[]" :value="filter" @change="toggleFilter(filter)">
-                    <label :for="filter">{{ filter }}</label>
-                  </div>
-                </div>
-              </div>
-              <div id="index-items">
-                <div class="item" 
-                     v-for="item in filteredItems" 
-                     :key="item.slug" 
-                     :id="item.slug"
-                     :class="{ visited: visitedProjects.includes(item.slug) }"
-                     @click="viewProject(item.slug)">
-                  <div class="title">{{ item.title }}</div>
-                  <div class="authors">{{ item.authors }}</div>
-                  <div class="tag-and-date">{{ item.tags.join(', ') }}, {{ item.date }}</div>
-                </div>
+      <section id="index">
+        <div id="index-inner">
+          <div id="search-and-filters">
+            <div id="search">
+              <span class="descriptor">Search by</span>
+              <input type="search" v-model="searchQuery" placeholder="anything">
+            </div>
+            <div id="filters">
+              <span class="descriptor">Filter by</span>
+              <div class="filter" v-for="filter in filters" :key="filter">
+                <input type="checkbox" :id="filter" name="filters[]" :value="filter" @change="toggleFilter(filter)">
+                <label :for="filter">{{ filter }}</label>
               </div>
             </div>
-          </section>
+          </div>
+          <div id="index-items">
+            <div class="item" 
+                 v-for="item in filteredItems" 
+                 :key="item.slug" 
+                 :id="item.slug"
+                 :class="{ visited: visitedProjects.includes(item.slug) }"
+                 @click="viewProject(item.slug)">
+              <div class="title">{{ item.title }}</div>
+              <div class="authors">{{ item.authors }}</div>
+              <div class="tag-and-date">{{ item.tags.join(', ') }}, {{ item.date }}</div>
+            </div>
+          </div>
         </div>
-      </transition>
+      </section>
     `,
     computed: {
         filteredItems() {
@@ -81,10 +78,6 @@ Vue.component('index-page', {
         viewProject(slug) {
             this.markProjectAsVisited(slug);
             this.$router.push({ name: 'project', params: { slug } });
-            this.closeOverlay();
-        },
-        closeOverlay() {
-            this.$emit('toggle-overlay', null); // Emit event to toggle the overlay off
         },
         toggleFilter(filter) {
             if (this.activeFilters.includes(filter)) {

@@ -23,9 +23,9 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Rad Lab">
 
-    <!-- <link rel="stylesheet" href="css/global.css"> -->
     <link rel="stylesheet" href="/css/fonts.css"> 
     <link rel="stylesheet" href="/css/style.css"> 
+
     <script>
         // Set the API URL based on the hostname
         const hostname = window.location.hostname;
@@ -36,24 +36,25 @@
 </head>
 <body>
     <div id="app">
-        <navigation @toggle-overlay="toggleOverlay"></navigation>
-        <router-view v-if="!showHomePage"></router-view>
+        <navigation></navigation>
+        <overlay ref="overlay" :direction="overlayDirection" :visible="overlayVisible"></overlay>
         <home-page></home-page>
     </div>
 
     <!-- Load Vue -->
-    <script src="/js/vue/vue-2.js"></script>
-    <script src="/js/vue/vue-router.js"></script>
+    <script src="/js/vue/vue-2.js?v=1.0"></script>
+    <script src="/js/vue/vue-router.js?v=1.0"></script>
 
     <!-- Vue components-->
-    <script src="/js/components/Navigation.js"></script>
-    <script src="/js/components/HomePage.js"></script>
-    <script src="/js/components/IndexPage.js"></script>
-    <script src="/js/components/AboutPage.js"></script>
-    <script src="/js/components/ContactPage.js"></script>
-    <script src="/js/components/ProjectPage.js"></script>
+    <script src="/js/components/Navigation.js?v=1.0"></script>
+    <script src="/js/components/HomePage.js?v=1.0"></script>
+    <script src="/js/components/IndexPage.js?v=1.0"></script>
+    <script src="/js/components/AboutPage.js?v=1.0"></script>
+    <script src="/js/components/ContactPage.js?v=1.0"></script>
+    <script src="/js/components/ProjectPage.js?v=1.0"></script>
+    <script src="/js/components/Overlay.js?v=1.0"></script>
 
     <!-- Initialize Vue -->
-    <script src="/js/main.js"></script>
+    <script src="/js/main.js?v=1.0"></script>
 </body>
 </html>

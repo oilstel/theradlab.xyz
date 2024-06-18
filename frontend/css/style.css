@@ -127,18 +127,6 @@ nav a#about-btn {
 img {
     max-width: 100%;
 }
-.overlay {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    backdrop-filter: blur(96px);
-    -webkit-backdrop-filter: blur(96px);
-    background-color: rgba(255, 255, 255, 0.3);
-    z-index: 999;
-    overflow: auto;
-}
 
 
 /* section {
@@ -525,32 +513,69 @@ section#index h1 {
 }
 
 
-/* Animation */
-
-/* General overlay transition */
-.overlay-enter-active, .overlay-leave-active {
-    transition: transform 0.5s ease;
+/* Base styles for the overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    backdrop-filter: blur(96px);
+    -webkit-backdrop-filter: blur(96px);
+    background-color: rgba(255, 255, 255, 0.3);
+    z-index: 999;
+    overflow: auto;
+    transition: opacity 0.5s, transform 0.5s;
 }
-  
-/* Slide in from left for Index */
-.overlay-enter.index, .overlay-leave-to.index {
+
+/* Transition classes for .index */
+.index-enter, .index-leave-to {
+    opacity: 0;
     transform: translateX(-100%);
 }
 
-/* Slide in from right for About */
-.overlay-enter.about, .overlay-leave-to.about {
+.index-enter-to {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Transition classes for .about */
+.about-enter, .about-leave-to {
+    opacity: 0;
     transform: translateX(100%);
 }
 
-/* Slide up from bottom for Contact */
-.overlay-enter.contact, .overlay-leave-to.contact {
+.about-enter-to {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Transition classes for .contact */
+.contact-enter, .contact-leave-to {
+    opacity: 0;
     transform: translateY(100%);
 }
 
-/* Ensure the overlay is initially hidden off-screen */
-.overlay-enter, .overlay-leave-to {
-    transform: translateX(0%);
+.contact-enter-to {
+    opacity: 1;
+    transform: translateY(0);
 }
+
+/* Transition classes for .project */
+.project-enter, .project-leave-to {
+    opacity: 0;
+}
+
+.project-enter-to {
+    opacity: 1;
+}
+
+
+
+
+
+
+
 
   
   

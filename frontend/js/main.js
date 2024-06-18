@@ -1,4 +1,4 @@
-// assets/js/main.js
+// main.js
 
 Vue.config.devtools = true;
 Vue.config.productionTip = false;
@@ -22,43 +22,66 @@ new Vue({
     data: {
         activeOverlay: null,
         showHomePage: true,
-        visitedProjects: []
+        visitedProjects: [],
+        overlayDirection: '',
+        overlayVisible: false // New state to track visibility
     },
     watch: {
         $route(to) {
             this.showHomePage = to.path === '/';
             this.checkAndSetBodyOverflow(to);
+            if (this.$refs.overlay) {
+                if (this.showHomePage) {
+                    this.$refs.overlay.setActiveComponent(null); // Hide overlay on homepage
+                } else {
+                    this.$refs.overlay.setActiveComponent(to.name + '-page'); // Show the correct overlay
+                }
+            }
         }
     },
     methods: {
         toggleOverlay(overlay) {
-            console.log('toggleOverlay called with:', overlay); // Debug log
             if (this.activeOverlay === overlay) {
+                this.overlayVisible = false; // Hide overlay with animation
                 this.activeOverlay = null;
                 this.showHomePage = true;
-                document.body.style.overflow = ''; // Remove overflow hidden
+                document.body.style.overflow = '';
                 this.$router.push({ name: 'home' });
             } else {
+                this.overlayVisible = true; // Show overlay with animation
                 this.activeOverlay = overlay;
                 this.showHomePage = false;
-                document.body.style.overflow = 'hidden'; // Add overflow hidden
+                document.body.style.overflow = 'hidden';
+                if (this.$refs.overlay) {
+                    this.$refs.overlay.setActiveComponent(overlay + '-page');
+                }
                 this.$router.push({ name: overlay });
             }
-            console.log('Document body overflow:', document.body.style.overflow); // Debug log
         },
         checkAndSetBodyOverflow(route) {
             const overlays = ['about', 'contact', 'index', 'project'];
             if (overlays.includes(route.name)) {
                 this.activeOverlay = route.name;
-                document.body.style.overflow = 'hidden'; // Add overflow hidden
+                this.overlayVisible = true; // Show overlay
+                document.body.style.overflow = 'hidden';
+                if (this.$refs.overlay) {
+                    this.$refs.overlay.setActiveComponent(route.name + '-page');
+                }
             } else {
                 this.activeOverlay = null;
-                document.body.style.overflow = ''; // Remove overflow hidden
+                this.overlayVisible = false; // Hide overlay
+                document.body.style.overflow = '';
             }
         }
     },
     created() {
         this.showHomePage = this.$route.path === '/';
-        this.checkAndSetBodyOverflow(this.$route); // Check and set overflow when page loads
+        this.checkAndSetBodyOverflow(this.$route);
+    },
+    mounted() {
+        if (this.$refs.overlay && this.activeOverlay) {
+            this.$refs.overlay.setActiveComponent(this.activeOverlay + '-page');
+        }
     }
 });
+

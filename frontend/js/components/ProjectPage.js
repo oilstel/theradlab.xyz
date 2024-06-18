@@ -1,3 +1,4 @@
+// ProjectPage.js
 Vue.component('project-page', {
     data() {
         return {
@@ -9,18 +10,16 @@ Vue.component('project-page', {
         };
     },
     template: `
-      <div class="overlay">
-        <section id="project">
-          <article v-if="project" class="page-content">
-            <h1 class="project-title">{{ project.title }}</h1>
-            <div v-for="layout in project.layouts" v-html="layout"></div>
-            <div class="pagination">
-              <button id="prev" @click="goToPrevious" :disabled="currentIndex === 0">Previous</button>
-              <button id="next" @click="goToNext" :disabled="currentIndex === projects.length - 1">Next</button>
-            </div>
-          </article>
-        </section>
-      </div>
+      <section id="project">
+        <article v-if="project" class="page-content">
+          <h1 class="project-title">{{ project.title }}</h1>
+          <div v-for="layout in project.layouts" v-html="layout"></div>
+          <div class="pagination">
+            <button id="prev" @click="goToPrevious" :disabled="currentIndex === 0">Previous</button>
+            <button id="next" @click="goToNext" :disabled="currentIndex === projects.length - 1">Next</button>
+          </div>
+        </article>
+      </section>
     `,
     created() {
         this.fetchProjects();
@@ -53,8 +52,9 @@ Vue.component('project-page', {
                         title: data.title,
                         layouts: data.layouts
                     };
-                    document.title = `${this.project.title} – Rad Lab`;  // Set document title
+                    document.title = `${this.project.title} – Rad Lab`;
                     this.loading = false;
+                    this.resetOverlayScroll(); // Reset overlay scroll position
                 })
                 .catch(error => {
                     console.error('Error fetching project content:', error);
@@ -65,17 +65,27 @@ Vue.component('project-page', {
             if (this.currentIndex > 0) {
                 this.currentIndex--;
                 const previousSlug = this.projects[this.currentIndex].slug;
-                this.fetchProject(previousSlug);
-                this.$router.push({ name: 'project', params: { slug: previousSlug } });
+                this.$router.push({ name: 'project', params: { slug: previousSlug } }).then(() => {
+                    this.fetchProject(previousSlug);
+                });
             }
         },
         goToNext() {
             if (this.currentIndex < this.projects.length - 1) {
                 this.currentIndex++;
                 const nextSlug = this.projects[this.currentIndex].slug;
-                this.fetchProject(nextSlug);
-                this.$router.push({ name: 'project', params: { slug: nextSlug } });
+                this.$router.push({ name: 'project', params: { slug: nextSlug } }).then(() => {
+                    this.fetchProject(nextSlug);
+                });
             }
+        },
+        resetOverlayScroll() {
+            this.$nextTick(() => {
+                const overlay = this.$root.$refs.overlay.$refs.overlay;
+                if (overlay) {
+                    overlay.scrollTop = 0;
+                }
+            });
         }
     },
     watch: {

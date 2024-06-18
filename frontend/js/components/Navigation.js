@@ -1,5 +1,4 @@
-// assets/js/components/Navigation.js
-
+// Navigation.js
 Vue.component('navigation', {
     template: `
       <nav>
@@ -10,11 +9,11 @@ Vue.component('navigation', {
       </nav>
     `,
     methods: {
-      navigateTo(route) {
-        this.$router.push({ name: route });
-      },
-      toggleOverlay(overlay) {
-        this.$emit('toggle-overlay', overlay);
-      }
+        navigateTo(route) {
+            this.$router.push({ name: route });
+        },
+        toggleOverlay(overlay) {
+            this.$root.toggleOverlay(overlay);
+        }
     }
 });
