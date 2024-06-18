@@ -1,0 +1,44 @@
+title: Lilypad
+name: lilypad
+icon: link
+label: "{{ title }} - {{ url }}"
+fields:
+  selectedProject:
+    label: Project
+    type: pages
+    layout: list
+    size: large
+    query: site.find('projects').children.listed
+    multiple: false
+    sortable: false
+    link: false
+  displayAsTextLilypad:
+    label: Display as text lilypad
+    type: toggle
+  lilypadSubtitle:
+    label: Lilypad Subtitle
+    type: text
+    when:
+      displayAsTextLilypad: true
+  lineAfterSubtitle:
+    type: line
+  alignment:
+    type: toggles
+    label: Alignment
+    default: left
+    options:
+      - left
+      - center
+      - right
+    when:
+      displayAsTextLilypad: false
+  size:
+    type: toggles
+    label: Size
+    default: medium
+    options:
+      - small
+      - medium
+      - large
+    when:
+      displayAsTextLilypad: false

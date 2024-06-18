@@ -17,27 +17,18 @@ tabs:
   homepageTab:
     label: Lilypads
     sections:
-      help:
-        type: fields
-        fields:
-          info:
-            label: ' '
-            type: info
-            text: |
-              Choose projects to populate the lilypads on the homepage. You can also order the projects using the handle in the corner of each project's card.
-      homepageProjects:
+      lilypads:
         label: Lilypads
         type: fields
         fields:
-          selectedProjects:
-            label: Lilypads
-            type: pages
-            layout: cards
-            size: small
-            query: site.find('projects').children.listed
-            multiple: true
-            # max: 5
-            sortable: true
+          layout:
+            label: Layout
+            type: layout
+            layouts:
+              - "1/2, 1/2"  # Two-column layout
+              - "1/1"       # Full-width layout
+            fieldsets:
+              - lilypad
 
   pagesTab:
     label: Pages

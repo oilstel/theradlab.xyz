@@ -1,0 +1,52 @@
+.k-block-type-lilypad .lilypad-block {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 10px;
+    padding: 20px;
+}
+
+.k-layout-column[style="--width: 1/2;"] .k-block {
+    height: 100%;
+}
+.k-layout-column[style="--width: 1/2;"] .lilypad-block {
+    height: 100%;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+/* Alignment */
+.k-block-type-lilypad .lilypad-block-left {
+    align-items: flex-start;
+    text-align: left;
+}
+.k-block-type-lilypad .lilypad-block-center {
+    align-items: center;
+    text-align: center;
+}
+.k-block-type-lilypad .lilypad-block-right {
+    align-items: flex-end;
+    text-align: right;
+}
+
+/* Lilypad text block */
+.lilypad-block-text {
+    display: block !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    width: 100%;
+}
+.lilypad-block-text h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Size */
+.k-block-type-lilypad .lilypad-block-small img {
+    width: 40%;
+}
+.k-block-type-lilypad .lilypad-block-medium img {
+    width: 80%;
+}
+.k-block-type-lilypad .lilypad-block-large img {
+    width: 100%;
+}
