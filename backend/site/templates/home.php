@@ -39,32 +39,25 @@ foreach ($site->layout()->toLayouts() as $layout) {
                 }
             }
 
+            $slug = $selectedProject ? $selectedProject->slug() : null;
             $blockData = [
                 'title' => $selectedProject ? $selectedProject->title()->value() : null,
-                'slug' => $selectedProject ? $selectedProject->slug() : null,
+                'slug' => $slug,
                 'type' => $block->displayAsTextLilypad()->bool() ? 'text' : 'image',
                 'image' => $imageUrl,
                 'textSubtitle' => $block->lilypadSubtitle()->value(),
                 'alignment' => $block->displayAsTextLilypad()->bool() ? null : $block->alignment()->value(),
-                'size' => $block->size()->value()
+                'size' => $block->size()->value(),
+                'empty' => empty($slug)
             ];
 
-            // Check if blockData is not empty before adding it to rowData
-            if (!empty($blockData['title']) || !empty($blockData['slug']) || !empty($blockData['type']) || !empty($blockData['image']) || !empty($blockData['textSubtitle']) || !empty($blockData['alignment']) || !empty($blockData['size'])) {
-                $rowData['block'][] = $blockData;
-            }
+            $rowData['block'][] = $blockData;
         }
 
-        // Check if rowData['block'] is not empty before adding it to layoutData['blocks']
-        if (!empty($rowData['block'])) {
-            $layoutData['blocks'][] = $rowData;
-        }
+        $layoutData['blocks'][] = $rowData;
     }
 
-    // Check if layoutData['blocks'] is not empty before adding it to data['layouts']
-    if (!empty($layoutData['blocks'])) {
-        $data['layouts'][] = $layoutData;
-    }
+    $data['layouts'][] = $layoutData;
 }
 
 // Output the data as JSON
