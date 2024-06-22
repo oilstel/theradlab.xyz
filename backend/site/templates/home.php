@@ -22,10 +22,10 @@ foreach ($site->layout()->toLayouts() as $layout) {
         $rowData = [
             'block' => []
         ];
-    
+
         foreach ($column->blocks() as $block) {
             $selectedProject = $block->selectedProject()->isNotEmpty() ? $block->selectedProject()->toPage() : null;
-    
+
             $imageUrl = null;
             if ($selectedProject) {
                 $coverFile = $selectedProject->cover()->toFile();
@@ -38,7 +38,7 @@ foreach ($site->layout()->toLayouts() as $layout) {
                     }
                 }
             }
-    
+
             $blockData = [
                 'title' => $selectedProject ? $selectedProject->title()->value() : null,
                 'slug' => $selectedProject ? $selectedProject->slug() : null,
@@ -48,15 +48,23 @@ foreach ($site->layout()->toLayouts() as $layout) {
                 'alignment' => $block->displayAsTextLilypad()->bool() ? null : $block->alignment()->value(),
                 'size' => $block->size()->value()
             ];
-    
-            $rowData['block'][] = $blockData;
-        }
-    
-        $layoutData['blocks'][] = $rowData;
-    }
-    
 
-    $data['layouts'][] = $layoutData;
+            // Check if blockData is not empty before adding it to rowData
+            if (!empty($blockData['title']) || !empty($blockData['slug']) || !empty($blockData['type']) || !empty($blockData['image']) || !empty($blockData['textSubtitle']) || !empty($blockData['alignment']) || !empty($blockData['size'])) {
+                $rowData['block'][] = $blockData;
+            }
+        }
+
+        // Check if rowData['block'] is not empty before adding it to layoutData['blocks']
+        if (!empty($rowData['block'])) {
+            $layoutData['blocks'][] = $rowData;
+        }
+    }
+
+    // Check if layoutData['blocks'] is not empty before adding it to data['layouts']
+    if (!empty($layoutData['blocks'])) {
+        $data['layouts'][] = $layoutData;
+    }
 }
 
 // Output the data as JSON

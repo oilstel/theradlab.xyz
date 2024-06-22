@@ -6,6 +6,7 @@ panel.plugin('yourname/lilypad', {
             return this.content.selectedproject && this.content.selectedproject.length > 0 ? this.content.selectedproject[0] : {};
           },
           projectImage() {
+            console.log(this.project);
             return this.project.image ? this.project.image.url : '';
           },
           projectTitle() {

@@ -35,7 +35,7 @@ fields:
   size:
     type: toggles
     label: Size
-    default: medium
+    default: large
     options:
       - small
       - medium
