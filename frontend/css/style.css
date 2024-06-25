@@ -93,7 +93,7 @@ nav a {
     cursor: pointer;
 }
 nav a#site-title {
-    top: 25px;
+    top: 3px;
     left: 50%;
     transform: translate(-50%, 0);
     background-image: url('/images/logo.svg');
@@ -106,15 +106,15 @@ nav a#site-title {
 nav a#contact-btn {
     left: 50%;
     transform: translate(-50%, 0);
-    bottom: 25px;
+    bottom: 17px;
 }
 nav a#index-btn {
-    left: 7px;
+    left: 0px;
     transform: translate(0, -50%) rotate(270deg);
     top: 50%;
 }
 nav a#about-btn {
-    right: 3px;
+    right: -4px;
     transform: translate(0, -50%) rotate(90deg);
     top: 50%;
 }
@@ -129,20 +129,10 @@ img {
 }
 
 
-/* section {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    backdrop-filter: blur(96px);
-    -webkit-backdrop-filter: blur(96px);
-    background-color: rgba(255, 255, 255, 0.3);
-    z-index: 999;
-} */
+
 section {
-    padding: 0 111px;
-    margin-top: 160px;
+    padding: 0 76px;
+    margin-top: 76px;
     padding-bottom: 160px;
 }
 section button.close-section {
