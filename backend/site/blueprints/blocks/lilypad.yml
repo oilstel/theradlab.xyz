@@ -9,6 +9,7 @@ fields:
     layout: list
     size: large
     query: site.find('projects').children.listed
+    image: page.cover.toFile() ?? page.images.first()
     multiple: false
     sortable: false
     link: false
