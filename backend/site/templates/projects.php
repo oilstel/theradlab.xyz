@@ -14,7 +14,8 @@ foreach ($projects as $project) {
         $data['projects'][] = [
             'title' => $project->title()->value(),
             'authors' => $project->authors()->value(),
-            'tags' => $project->tags()->value(),
+            'type' => $project->type()->value(),
+            'tags' => $project->tags()->split(', '),
             'startDate' => $project->startDate()->isNotEmpty() ? $project->startDate()->value() : null,
             'endDate' => $project->endDate()->isNotEmpty() ? $project->endDate()->value() : null,
             'slug' => $project->slug()

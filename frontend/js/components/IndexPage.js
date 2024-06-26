@@ -35,7 +35,7 @@ Vue.component('index-page', {
                  @click="viewProject(item.slug)">
               <div class="title">{{ item.title }}</div>
               <div class="authors">{{ item.authors }}</div>
-              <div class="tag-and-date">{{ item.tags.join(', ') }}<span v-if="hasDate(item.startDate, item.endDate)">,</span> {{ formatDates(item.startDate, item.endDate) }}</div>
+              <div class="type-and-date">{{ item.type }}<span v-if="hasDate(item.startDate, item.endDate)">,</span> {{ formatDates(item.startDate, item.endDate) }}</div>
             </div>
           </div>
         </div>
@@ -43,26 +43,27 @@ Vue.component('index-page', {
     `,
     computed: {
         filteredItems() {
-            let filteredByTags = this.items;
+            let filteredByType = this.items;
             if (this.activeFilters.length > 0) {
-                filteredByTags = this.items.filter(item => {
-                    return this.activeFilters.some(filter => item.tags.includes(filter));
+                filteredByType = this.items.filter(item => {
+                    return this.activeFilters.includes(item.type);
                 });
             }
             if (this.searchQuery) {
                 const query = this.searchQuery.toLowerCase();
-                return filteredByTags.filter(item => {
+                return filteredByType.filter(item => {
                     const itemData = [
                         item.title.toLowerCase(),
                         item.authors.toLowerCase(),
-                        item.tags.join(' ').toLowerCase(),
+                        item.type ? item.type.toLowerCase() : '',
+                        item.tags ? item.tags.join(' ').toLowerCase() : '', // Include tags in the search
                         item.startDate ? item.startDate.toLowerCase() : '',
                         item.endDate ? item.endDate.toLowerCase() : ''
                     ];
                     return itemData.some(data => data.includes(query));
                 });
             }
-            return filteredByTags;
+            return filteredByType;
         }
     },
     created() {
@@ -76,12 +77,13 @@ Vue.component('index-page', {
                     this.items = data.projects.map(project => ({
                         title: project.title,
                         authors: project.authors,
-                        tags: project.tags.split(', '),
+                        type: project.type || '', // Handle empty type
+                        tags: project.tags || [], // Handle empty tags
                         startDate: project.startDate,
                         endDate: project.endDate,
                         slug: project.slug
                     }));
-                    this.filters = [...new Set(this.items.flatMap(item => item.tags))];
+                    this.filters = [...new Set(this.items.map(item => item.type).filter(type => type))]; // Filter out empty types
                     document.title = this.pageTitle;
                 })
                 .catch(error => console.error('Error fetching projects:', error));

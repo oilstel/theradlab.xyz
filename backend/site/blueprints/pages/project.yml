@@ -54,12 +54,16 @@ tabs:
           endDate:
             label: End Date
             type: number
-          tags:
+          type:
             label: Type
             type: tags
             help: "Add a category for this project."
             separator: ","
             max: 1
+          tags:
+            label: Tags
+            type: tags
+            separator: ","
           lineBeforeHideFromIndex:
             type: line
           hideFromIndex:
