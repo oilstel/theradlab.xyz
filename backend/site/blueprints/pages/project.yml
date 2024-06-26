@@ -40,14 +40,14 @@ tabs:
             separator: ","
       - width: 1/2
         fields:
-          displayAsTextLilypad:
-            label: Display as text lilypad
-            type: toggle
-          lilypadSubtitle:
-            label: Lilypad Subtitle
-            type: text
-          lineAfterSubtitle:
-            type: line
+          # displayAsTextLilypad:
+          #   label: Display as text lilypad
+          #   type: toggle
+          # lilypadSubtitle:
+          #   label: Lilypad Subtitle
+          #   type: text
+          # lineAfterSubtitle:
+          #   type: line
           startDate:
             label: Start Date
             type: number
