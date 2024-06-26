@@ -35,7 +35,9 @@ Vue.component('index-page', {
                  @click="viewProject(item.slug)">
               <div class="title">{{ item.title }}</div>
               <div class="authors">{{ item.authors }}</div>
-              <div class="type-and-date">{{ item.type }}<span v-if="hasDate(item.startDate, item.endDate)">,</span> {{ formatDates(item.startDate, item.endDate) }}</div>
+              <div class="type-and-date">
+                {{ item.type }}<span v-if="item.type && hasDate(item.startDate, item.endDate)">,</span> {{ formatDates(item.startDate, item.endDate) }}
+              </div>
             </div>
           </div>
         </div>

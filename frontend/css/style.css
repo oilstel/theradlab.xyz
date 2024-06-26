@@ -244,14 +244,14 @@ section#index h1 {
 #index-items .item .authors {
     width: 20%;
 }
-#index-items .item .tag-and-date {
+#index-items .item .type-and-date {
     color: var(--modem);
     width: 20%;
 }
 #index-items .item.visited {
     background-color: var(--calcite);
 }
-#index-items .item .title, #index-items .item .authors, #index-items .item .tag-and-date {
+#index-items .item .title, #index-items .item .authors, #index-items .item .type-and-date {
     white-space: nowrap;  /* Ensure text stays in a single line */
     overflow: hidden;     /* Hide overflow */
     text-overflow: ellipsis;  /* Add ellipsis to text that overflows */
@@ -659,7 +659,7 @@ section#index h1 {
     #index-items .item .authors {
         order: 3;
     }
-    #index-items .item .tag-and-date {
+    #index-items .item .type-and-date {
         order: 1;
     }
     /* Lilypads */
@@ -730,7 +730,7 @@ section#index h1 {
         line-height: var(--p1-mobile-line-height);
     }
     /* 100% filters and index items */
-    #search-and-filters #search, #search-and-filters #filters, #index-items .item .title, #index-items .item .authors, #index-items .item .tag-and-date {
+    #search-and-filters #search, #search-and-filters #filters, #index-items .item .title, #index-items .item .authors, #index-items .item .type-and-date {
         width: 100%;
     }
     /* Close button */
@@ -746,7 +746,7 @@ section#index h1 {
     #search-and-filters span.descriptor, #search-and-filters input, #search-and-filters label, section button.close-section {
         font-size: var(--p1-mobile-font-size);
     }
-    #index-items .item .tag-and-date, #index-items .item .authors {
+    #index-items .item .type-and-date, #index-items .item .authors {
         font-size: var(--p2-mobile-font-size);
         line-height: var(--p2-mobile-line-height);
     }
