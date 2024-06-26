@@ -15,7 +15,8 @@ foreach ($projects as $project) {
             'title' => $project->title()->value(),
             'authors' => $project->authors()->value(),
             'tags' => $project->tags()->value(),
-            'date' => $project->date()->value(),
+            'startDate' => $project->startDate()->isNotEmpty() ? $project->startDate()->value() : null,
+            'endDate' => $project->endDate()->isNotEmpty() ? $project->endDate()->value() : null,
             'slug' => $project->slug()
         ];
     }

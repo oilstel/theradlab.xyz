@@ -12,7 +12,8 @@ $siteUrl = $kirby->url('index');
 $data = [
     'title' => (string)$page->title(), // Retrieve the title
     'image' => $page->cover()->isNotEmpty() ? $page->cover()->first()->toFile()->url() : null, // Retrieve the cover image's URL if available
-    'date' => $page->date()->isNotEmpty() ? $page->date()->value() : null, // Retrieve date
+    'startDate' => $page->startDate()->isNotEmpty() ? $page->startDate()->value() : null, // Retrieve start date if available
+    'endDate' => $page->endDate()->isNotEmpty() ? $page->endDate()->value() : null, // Retrieve end date if available
     // Initialize an empty array to store layouts
     'layouts' => []
 ];

@@ -48,8 +48,11 @@ tabs:
             type: text
           lineAfterSubtitle:
             type: line
-          date:
-            label: Date
+          startDate:
+            label: Start Date
+            type: number
+          endDate:
+            label: End Date
             type: number
           tags:
             label: Type

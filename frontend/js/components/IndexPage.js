@@ -35,7 +35,7 @@ Vue.component('index-page', {
                  @click="viewProject(item.slug)">
               <div class="title">{{ item.title }}</div>
               <div class="authors">{{ item.authors }}</div>
-              <div class="tag-and-date">{{ item.tags.join(', ') }}, {{ item.date }}</div>
+              <div class="tag-and-date">{{ item.tags.join(', ') }}<span v-if="hasDate(item.startDate, item.endDate)">,</span> {{ formatDates(item.startDate, item.endDate) }}</div>
             </div>
           </div>
         </div>
@@ -50,7 +50,17 @@ Vue.component('index-page', {
                 });
             }
             if (this.searchQuery) {
-                return filteredByTags.filter(item => item.title.toLowerCase().includes(this.searchQuery.toLowerCase()));
+                const query = this.searchQuery.toLowerCase();
+                return filteredByTags.filter(item => {
+                    const itemData = [
+                        item.title.toLowerCase(),
+                        item.authors.toLowerCase(),
+                        item.tags.join(' ').toLowerCase(),
+                        item.startDate ? item.startDate.toLowerCase() : '',
+                        item.endDate ? item.endDate.toLowerCase() : ''
+                    ];
+                    return itemData.some(data => data.includes(query));
+                });
             }
             return filteredByTags;
         }
@@ -67,7 +77,8 @@ Vue.component('index-page', {
                         title: project.title,
                         authors: project.authors,
                         tags: project.tags.split(', '),
-                        date: project.date,
+                        startDate: project.startDate,
+                        endDate: project.endDate,
                         slug: project.slug
                     }));
                     this.filters = [...new Set(this.items.flatMap(item => item.tags))];
@@ -91,6 +102,20 @@ Vue.component('index-page', {
                 this.visitedProjects.push(slug);
             }
             this.$root.visitedProjects = this.visitedProjects; // Sync with root
+        },
+        formatDates(startDate, endDate) {
+            if (startDate && endDate) {
+                return `${startDate} – ${endDate}`;
+            } else if (startDate) {
+                return startDate;
+            } else if (endDate) {
+                return endDate;
+            } else {
+                return '';
+            }
+        },
+        hasDate(startDate, endDate) {
+            return startDate || endDate;
         }
     }
 });
