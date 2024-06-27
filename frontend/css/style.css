@@ -754,7 +754,7 @@ section#index h1 {
         line-height: var(--h2-mobile-line-height);
     }
     nav a#site-title {
-        width: 170px;
+        width: 165px;
         height: 45px;
         top: 14px
     }
