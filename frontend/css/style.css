@@ -432,6 +432,7 @@ section#index h1 {
 .page-content {
     max-width: 888px;
     margin: 0 auto;
+    margin-top: 150px;
     /* margin-top: 80px;
     padding: 24px; */
 }
@@ -581,16 +582,6 @@ section#index h1 {
 
 
 
-
-
-
-
-
-  
-  
-
-
-
 /* Tablet */
 @media(max-width:838px) {
     /* Navigation */
@@ -599,29 +590,29 @@ section#index h1 {
         line-height: var(--h1-mobile-line-height);
     }
     nav a#site-title {
-        left: 24px;
+        left: 20px;
         transform: initial;
         width: 196px;
         height: 53px;
-        top: 16px;
+        top: 11px;
     }
     nav a#index-btn {
-        top: 31px;
+        top: 27px;
         left: initial;
-        right: 24px;
+        right: 20px;
         transform: initial;
     }
     nav a#about-btn {
         top: initial;
-        left: 24px;
-        bottom: 24px;
+        left: 20px;
+        bottom: 20px;
         transform: initial;
     }
     nav a#contact-btn {
         top: initial;
         left: initial;
-        right: 24px;
-        bottom: 24px;
+        right: 20px;
+        bottom: 20px;
         transform: initial;
     }
     .overlay {
@@ -629,7 +620,7 @@ section#index h1 {
     }
     /* Section */
     section {
-        padding: 0 24px;
+        padding: 0 20px;
     }
     /* Index */
     section#index h1 {
@@ -733,6 +724,9 @@ section#index h1 {
     #search-and-filters #search, #search-and-filters #filters, #index-items .item .title, #index-items .item .authors, #index-items .item .type-and-date {
         width: 100%;
     }
+    button.close-section {
+        display: none;
+    }
     /* Close button */
     button.close-section::before {
         height: 20px;
@@ -762,7 +756,7 @@ section#index h1 {
     nav a#site-title {
         width: 170px;
         height: 45px;
-        top: 18px
+        top: 14px
     }
     /* Index */
     section#index h1 {
