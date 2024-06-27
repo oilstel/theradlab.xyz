@@ -22,7 +22,7 @@ Vue.component('index-page', {
               <span class="descriptor">Filter by</span>
               <div class="filter" v-for="filter in filters" :key="filter">
                 <input type="checkbox" :id="filter" name="filters[]" :value="filter" @change="toggleFilter(filter)">
-                <label :for="filter">{{ filter }}</label>
+                <label :for="filter">{{ capitalize(filter) }}</label>
               </div>
             </div>
           </div>
@@ -48,7 +48,7 @@ Vue.component('index-page', {
             let filteredByType = this.items;
             if (this.activeFilters.length > 0) {
                 filteredByType = this.items.filter(item => {
-                    return this.activeFilters.includes(item.type);
+                    return this.activeFilters.includes(item.type) || (item.tags && item.tags.some(tag => this.activeFilters.includes(tag)));
                 });
             }
             if (this.searchQuery) {
@@ -85,7 +85,12 @@ Vue.component('index-page', {
                         endDate: project.endDate,
                         slug: project.slug
                     }));
-                    this.filters = [...new Set(this.items.map(item => item.type).filter(type => type))]; // Filter out empty types
+
+                    // Add both types and tags to filters
+                    const types = new Set(this.items.map(item => item.type).filter(type => type));
+                    const tags = new Set(this.items.flatMap(item => item.tags));
+                    this.filters = [...types, ...tags];
+
                     document.title = this.pageTitle;
                 })
                 .catch(error => console.error('Error fetching projects:', error));
@@ -106,6 +111,10 @@ Vue.component('index-page', {
                 this.visitedProjects.push(slug);
             }
             this.$root.visitedProjects = this.visitedProjects; // Sync with root
+        },
+        capitalize(word) {
+            if (!word) return '';
+            return word.charAt(0).toUpperCase() + word.slice(1);
         },
         formatDates(startDate, endDate) {
             if (startDate && endDate) {
