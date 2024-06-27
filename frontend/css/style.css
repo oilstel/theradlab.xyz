@@ -135,7 +135,7 @@ section {
     margin-top: 76px;
     padding-bottom: 160px;
 }
-section button.close-section {
+button.close-section {
     position: fixed;
     top: 24px;
     right: 24px;
@@ -149,9 +149,9 @@ section button.close-section {
     color: var(--true-black);
     cursor: pointer;
 }
-section button.close-section::before {
+button.close-section::before {
     content: '';
-    background-image: url('/assets/images/close-symbol.svg');
+    background-image: url('/images/close-symbol.svg');
     background-size: contain;
     background-repeat: no-repeat;
     width: 24px;
@@ -734,7 +734,7 @@ section#index h1 {
         width: 100%;
     }
     /* Close button */
-    section button.close-section::before {
+    button.close-section::before {
         height: 20px;
         width: 20px;
     }
@@ -743,7 +743,7 @@ section#index h1 {
         font-size: var(--p1-mobile-font-size);
         line-height: var(--p1-mobile-line-height);
     }
-    #search-and-filters span.descriptor, #search-and-filters input, #search-and-filters label, section button.close-section {
+    #search-and-filters span.descriptor, #search-and-filters input, #search-and-filters label, button.close-section {
         font-size: var(--p1-mobile-font-size);
     }
     #index-items .item .type-and-date, #index-items .item .authors {

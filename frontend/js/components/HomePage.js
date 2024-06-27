@@ -33,6 +33,7 @@ Vue.component('home-page', {
     `,
     created() {
         this.fetchProjects();
+        document.title = this.pageTitle;
     },
     methods: {
         fetchProjects() {

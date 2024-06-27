@@ -17,6 +17,7 @@ Vue.component('overlay', {
     template: `
       <transition :name="transitionName">
         <div v-if="visible" :class="['overlay', overlayClass]" ref="overlay">
+          <button class="close-section" @click="closeOverlay">Close</button>
           <component v-if="activeComponent" :is="activeComponent"></component>
         </div>
       </transition>
@@ -24,6 +25,10 @@ Vue.component('overlay', {
     methods: {
         setActiveComponent(component) {
             this.activeComponent = component;
+        },
+        closeOverlay() {
+            this.$router.push({ name: 'home' });
+            document.title = 'Rad Lab';
         }
     }
 });

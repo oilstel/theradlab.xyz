@@ -47,6 +47,7 @@ new Vue({
                 this.showHomePage = true;
                 document.body.style.overflow = '';
                 this.$router.push({ name: 'home' });
+                document.title = 'Rad Lab';
             } else {
                 this.overlayVisible = true; // Show overlay with animation
                 this.activeOverlay = overlay;
