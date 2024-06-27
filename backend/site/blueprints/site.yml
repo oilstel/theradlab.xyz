@@ -42,15 +42,19 @@ tabs:
           - contact
 
   otherTab:
-    label: Meta & SEO
+    label: Metadata
     sections:
-      seo:
-        label: SEO Settings
+      metadata:
         type: fields
         fields:
-          siteDescription:
-            label: Site Description
-            type: textarea
-            width: 1/1
-            help: "Enter a brief description of your site that will show up under the title in search results."
-            buttons: false
+          socialImage:
+            label: Social Image
+            type: files
+            max: 1
+            help: "Social image must be titled `social.png`"
+          # siteDescription:
+          #   label: Site Description
+          #   type: textarea
+          #   width: 1/1
+          #   help: "Enter a brief description of your site that will show up under the title in search results."
+          #   buttons: false
