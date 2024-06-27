@@ -202,6 +202,7 @@ section#index h1 {
 }
 #search-and-filters #filters {
     display: flex;
+    flex-flow: row wrap;
     gap: 6px;
     width: 40%;
 }
