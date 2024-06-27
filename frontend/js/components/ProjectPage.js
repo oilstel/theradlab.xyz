@@ -39,6 +39,7 @@ Vue.component('project-page', {
             this.currentIndex = this.projects.findIndex(project => project.slug === slug);
             if (this.currentIndex !== -1) {
                 this.fetchProject(slug);
+                this.markProjectAsVisited(slug);
             } else {
                 this.project = null;
                 this.loading = false;
@@ -67,6 +68,7 @@ Vue.component('project-page', {
                 const previousSlug = this.projects[this.currentIndex].slug;
                 this.$router.push({ name: 'project', params: { slug: previousSlug } }).then(() => {
                     this.fetchProject(previousSlug);
+                    this.markProjectAsVisited(previousSlug);
                 });
             }
         },
@@ -76,8 +78,12 @@ Vue.component('project-page', {
                 const nextSlug = this.projects[this.currentIndex].slug;
                 this.$router.push({ name: 'project', params: { slug: nextSlug } }).then(() => {
                     this.fetchProject(nextSlug);
+                    this.markProjectAsVisited(nextSlug);
                 });
             }
+        },
+        markProjectAsVisited(slug) {
+            this.$root.markProjectAsVisited(slug);
         },
         resetOverlayScroll() {
             this.$nextTick(() => {

@@ -73,6 +73,11 @@ new Vue({
                 this.overlayVisible = false; // Hide overlay
                 document.body.style.overflow = '';
             }
+        },
+        markProjectAsVisited(slug) {
+            if (!this.visitedProjects.includes(slug)) {
+                this.visitedProjects.push(slug);
+            }
         }
     },
     created() {
@@ -85,4 +90,3 @@ new Vue({
         }
     }
 });
-
