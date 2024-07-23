@@ -1,4 +1,3 @@
-// IndexPage.js
 Vue.component('index-page', {
     data() {
         return {
@@ -28,7 +27,7 @@ Vue.component('index-page', {
           </div>
           <div id="index-items">
             <div class="item" 
-                 v-for="item in filteredItems" 
+                 v-for="item in sortedAndFilteredItems" 
                  :key="item.slug" 
                  :id="item.slug"
                  :class="{ visited: visitedProjects.includes(item.slug) }"
@@ -44,6 +43,9 @@ Vue.component('index-page', {
       </section>
     `,
     computed: {
+        sortedAndFilteredItems() {
+            return this.filteredItems.sort((a, b) => a.title.localeCompare(b.title));
+        },
         filteredItems() {
             let filteredByType = this.items;
             if (this.activeFilters.length > 0) {
