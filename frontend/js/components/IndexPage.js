@@ -73,7 +73,7 @@ Vue.component('index-page', {
     },
     methods: {
         fetchItems() {
-            fetch(`${window.apiUrl}projects`)
+            fetch(`${window.apiUrl}entries`)
                 .then(response => response.json())
                 .then(data => {
                     this.items = data.projects.map(project => ({

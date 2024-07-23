@@ -26,7 +26,7 @@ Vue.component('project-page', {
     },
     methods: {
         fetchProjects() {
-            fetch(`${window.apiUrl}projects`)
+            fetch(`${window.apiUrl}entries`)
                 .then(response => response.json())
                 .then(data => {
                     this.projects = data.projects;
@@ -46,7 +46,7 @@ Vue.component('project-page', {
             }
         },
         fetchProject(slug) {
-            fetch(`${window.apiUrl}projects/${slug}`)
+            fetch(`${window.apiUrl}entries/${slug}`)
                 .then(response => response.json())
                 .then(data => {
                     this.project = {
