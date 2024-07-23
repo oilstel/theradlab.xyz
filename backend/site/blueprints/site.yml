@@ -3,16 +3,16 @@ options:
   preview: http://68.183.58.246
 
 tabs:
-  projects:
-    label: Projects
+  entries:
+    label: Entries
     sections:
-      projectsQuert:
-        label: All Projects
+      entriesQuery:
+        label: All Entries
         type: pages
-        parent: site.find('projects')
+        parent: site.find('entries')
         info: "{{ page.authors }} {{ page.tags }} {{ page.date }}"
         image: page.cover.toFile() ?? page.images.first()
-        template: project
+        template: entry
 
   homepageTab:
     label: Lilypads

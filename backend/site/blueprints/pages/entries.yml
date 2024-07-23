@@ -1,11 +1,11 @@
-title: Projects
+title: Entries
 options:
   preview: http://68.183.58.246/{{ page.slug }}
 
 sections:
-  projectsList:
-    headline: "All Projects"
+  entriesList:
+    headline: "All Entries"
     type: pages
-    template: project  # Replace with your specific template(s) if needed
+    template: entry
     status: all
     info: "{{ page.authors }} {{ page.tags }} {{ page.date }}"

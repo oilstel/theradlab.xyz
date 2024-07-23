@@ -4,11 +4,11 @@ icon: link
 label: "{{ title }} - {{ url }}"
 fields:
   selectedProject:
-    label: Project
+    label: Entry
     type: pages
     layout: list
     size: large
-    query: site.find('projects').children.listed
+    query: site.find('entries').children.listed
     image: page.cover.toFile() ?? page.images.first()
     multiple: false
     sortable: false
